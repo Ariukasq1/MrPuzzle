@@ -112,6 +112,9 @@ export default function CartScreen() {
                 </h3>
               </Card>
               <Card>
+                <h3>Хүргэлтийн төлбөр : 5000 ₮</h3>
+              </Card>
+              <Card>
                 <h3>
                   Нийт үнэ :{' '}
                   {cartItems.reduce((a, c) => a + c.price * c.quantity, 0)} ₮

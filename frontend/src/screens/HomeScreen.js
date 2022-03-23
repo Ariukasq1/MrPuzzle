@@ -1,4 +1,4 @@
-import { useEffect, useReducer} from 'react';
+import { useEffect, useReducer } from 'react';
 import axios from 'axios';
 import logger from 'use-reducer-logger';
 import Row from 'react-bootstrap/Row';
@@ -7,6 +7,7 @@ import Product from '../components/Product';
 import { Helmet } from 'react-helmet-async';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
+import Carousel from 'react-bootstrap/Carousel';
 // import data from '../data';
 
 const reducer = (state, action) => {
@@ -46,8 +47,48 @@ function HomeScreen() {
   return (
     <div>
       <Helmet>
-        <title>MrPuzzle</title>
+        <title>Mr Puzzle Shop</title>
       </Helmet>
+      {/* <Carousel>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="/frontend/public/images/03.jpeg"
+            alt="First slide"
+          />
+          <Carousel.Caption>
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="/frontend/public/images/03.jpeg"
+            alt="Second slide"
+          />
+
+          <Carousel.Caption>
+            <h3>Second slide label</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="/frontend/public/images/03.jpeg"
+            alt="Third slide"
+          />
+
+          <Carousel.Caption>
+            <h3>Third slide label</h3>
+            <p>
+              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            </p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel> */}
+
       <h1>Онцлох бүтээгдэхүүнүүд</h1>
       <div className="products">
         {loading ? (
@@ -67,4 +108,5 @@ function HomeScreen() {
     </div>
   );
 }
+
 export default HomeScreen;

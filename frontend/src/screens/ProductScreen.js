@@ -94,7 +94,7 @@ function ProductScreen() {
                 numReviews={product.numReviews}
               ></Rating>
             </ListGroup.Item>
-            <ListGroup.Item>Үнэ: ${product.price}</ListGroup.Item>
+            <ListGroup.Item>Үнэ: {product.price}₮</ListGroup.Item>
             <ListGroup.Item>
               Тайлбар:
               <p>{product.description}</p>
@@ -108,7 +108,7 @@ function ProductScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>Үнэ:</Col>
-                    <Col>${product.price}</Col>
+                    <Col>{product.price}₮</Col>
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
