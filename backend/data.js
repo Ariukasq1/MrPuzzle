@@ -3,7 +3,7 @@ const data = {
   users: [
     {
       name: 'Toochko',
-      email: 'admin@example.com',
+      email: 'admin1@example.com',
       password: bcrypt.hashSync('123456'),
       isAdmin: true,
     },
@@ -67,7 +67,7 @@ const data = {
       category: 'Cube',
       image: '/images/p4.jpeg',
       price: 90000,
-      countInStock: 5,
+      countInStock: 0,
       brand: 'Gan',
       rating: 4.5,
       numReviews: 10,
