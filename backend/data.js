@@ -73,19 +73,6 @@ const data = {
       numReviews: 10,
       description: 'high quality product',
     },
-    {
-      // _id: '4',
-      name: '5x5 cube',
-      slug: '5x5-cube',
-      category: 'Cube',
-      image: '/images/p4.jpeg',
-      price: 90000,
-      countInStock: 5,
-      brand: 'Gan',
-      rating: 4.5,
-      numReviews: 10,
-      description: 'high quality product',
-    },
   ],
 };
 export default data;
