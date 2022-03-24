@@ -27,7 +27,7 @@ const data = {
       slug: 'Rubiks-cube',
       category: 'Cube',
       image: '/images/p1.jpeg', // 679px × 829px
-      price: 75000,
+      price: '75,000',
       countInStock: 20,
       brand: 'Rubiks',
       rating: 4.5,
@@ -75,8 +75,8 @@ const data = {
     },
     {
       // _id: '1',
-      name: 'Rubiks cube',
-      slug: 'Rubiks-cube',
+      name: 'Rubik cube',
+      slug: 'Rubik-cube',
       category: 'Cube',
       image: '/images/p1.jpeg', // 679px × 829px
       price: 75000,
@@ -88,8 +88,8 @@ const data = {
     },
     {
       // _id: '2',
-      name: 'Gan cube',
-      slug: 'Gan cube',
+      name: 'Gan cubes',
+      slug: 'Gan cubes',
       category: 'Cube',
       image: '/images/p2.jpeg',
       price: 55000,
@@ -101,8 +101,8 @@ const data = {
     },
     {
       // _id: '3',
-      name: 'Yuxin cube',
-      slug: 'Yuxin-cube',
+      name: 'Yuxins cube',
+      slug: 'Yuxins-cube',
       category: 'Cube',
       image: '/images/p3.png',
       price: 65000,
@@ -114,8 +114,8 @@ const data = {
     },
     {
       // _id: '4',
-      name: '4x4 cube',
-      slug: '4x4-cube',
+      name: '4x4x4 cube',
+      slug: '4x4x4-cube',
       category: 'Cube',
       image: '/images/p4.jpeg',
       price: 90000,
@@ -127,8 +127,8 @@ const data = {
     },
     {
       // _id: '1',
-      name: 'Rubiks cube',
-      slug: 'Rubiks-cube',
+      name: 'Rubik cubee',
+      slug: 'Rubiks-cubee',
       category: 'Cube',
       image: '/images/p1.jpeg', // 679px × 829px
       price: 75000,
@@ -140,8 +140,8 @@ const data = {
     },
     {
       // _id: '2',
-      name: 'Gan cube',
-      slug: 'Gan cube',
+      name: 'Gana cube',
+      slug: 'Gana cube',
       category: 'Cube',
       image: '/images/p2.jpeg',
       price: 55000,
@@ -153,8 +153,8 @@ const data = {
     },
     {
       // _id: '3',
-      name: 'Yuxin cube',
-      slug: 'Yuxin-cube',
+      name: 'Yuxinn cube',
+      slug: 'Yuxinn-cube',
       category: 'Cube',
       image: '/images/p3.png',
       price: 65000,
@@ -166,8 +166,8 @@ const data = {
     },
     {
       // _id: '4',
-      name: '4x4 cube',
-      slug: '4x4-cube',
+      name: '4x4x4x4 cube',
+      slug: '4x4x4x4-cube',
       category: 'Cube',
       image: '/images/p4.jpeg',
       price: 90000,
