@@ -28,9 +28,6 @@ import axios from 'axios';
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
-  const {
-    cart: { cartItems },
-  } = state;
   const signoutHandler = () => {
     ctxDispatch({ type: 'USER_SIGNOUT' });
     localStorage.removeItem('userInfo');
@@ -62,7 +59,7 @@ function App() {
       >
         <ToastContainer position="bottom-center" limit={1} />
         <header>
-          <Navbar fixed="top" bg="dark" variant="dark" expand="lg">
+          <Navbar bg="dark" variant="dark" expand="lg">
             <Container>
               <Button
                 variant="dark"
@@ -85,19 +82,13 @@ function App() {
                     <Nav className="me-auto  justify-content-end">
                       <Link to="/cart" className="nav-link">
                         Миний сагс
-                      </Link>
-                      <Link to="/cart" className="nav-link">
-                        {cartItems.reduce(
-                          (a, c) => a + c.price * c.quantity,
-                          0
-                        )}
-                        ₮
                         {cart.cartItems.length > 0 && (
                           <Badge pill bg="danger">
                             {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
                           </Badge>
                         )}
                       </Link>
+
                       {userInfo ? (
                         <NavDropdown
                           title={userInfo.name}
