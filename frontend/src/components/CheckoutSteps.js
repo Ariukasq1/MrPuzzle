@@ -6,9 +6,9 @@ export default function CheckoutSteps(props) {
   return (
     <Row className="checkout-steps">
       <Col className={props.step1 ? 'active' : ''}>Нэвтрэлт</Col>
-      <Col className={props.step2 ? 'active' : ''}>Хүргэлт</Col>
-      <Col className={props.step3 ? 'active' : ''}>Төлбөрийн мэдээлэл</Col>
-      <Col className={props.step4 ? 'active' : ''}>Захиалгын хэсэг</Col>
+      <Col className={props.step2 ? 'active' : ''}>Хаяг</Col>
+      <Col className={props.step3 ? 'active' : ''}>Төлбөр</Col>
+      <Col className={props.step4 ? 'active' : ''}>Дуусгах</Col>
     </Row>
   );
 }

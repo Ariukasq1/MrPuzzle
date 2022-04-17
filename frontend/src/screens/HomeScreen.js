@@ -7,6 +7,7 @@ import Product from '../components/Product';
 import { Helmet } from 'react-helmet-async';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
+import Slider from '../components/Carousel';
 // import data from '../data';
 
 const reducer = (state, action) => {
@@ -43,6 +44,7 @@ function HomeScreen() {
     };
     fetchData();
   }, []);
+
   return (
     <div>
       <Helmet>
@@ -50,6 +52,15 @@ function HomeScreen() {
       </Helmet>
 
       <h2 className="brand">Брэндүүд</h2>
+      {/* <div>
+        <Row>
+          {products.map((product) => (
+            <Col key={product.slug} sm={6} md={4} lg={3} className="mb-3">
+              <Product product={product}></Product>
+            </Col>
+          ))}
+        </Row>
+      </div> */}
       <div className="products">
         {loading ? (
           <LoadingBox />
@@ -64,6 +75,8 @@ function HomeScreen() {
             ))}
           </Row>
         )}
+
+        <Slider />
       </div>
     </div>
   );

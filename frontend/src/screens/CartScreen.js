@@ -43,8 +43,9 @@ export default function CartScreen() {
         <title>Миний сагс</title>
       </Helmet>
       <h1>Миний сагс</h1>
-      <Row>
-        <Col md={8}>
+
+      <div class="row justify-content-start">
+        <div class="col-8">
           {cartItems.length === 0 ? (
             <MessageBox>
               Сагс хоосон байна. <Link to="/">Бүтээгдэхүүн нэмэх</Link>
@@ -97,50 +98,37 @@ export default function CartScreen() {
               ))}
             </ListGroup>
           )}
-        </Col>
-      </Row>
-      <h2>Хүргэлтийн мэдээлэл</h2>
-      <p>22 цагаас өмнө захиалсан бараа дараа өдөртөө хүргэгдэнэ.</p>
-      <Container>
-        <Row>
-          <Col md={4}>
-            <div class="">
-              <Card>
-                <h3>
-                  Нийт бараа : {cartItems.reduce((a, c) => a + c.quantity, 0)}{' '}
-                  ширхэг
-                </h3>
-              </Card>
-              <Card>
-                <h3>Хүргэлтийн төлбөр : 5000 ₮</h3>
-              </Card>
-              <Card>
-                <h3>
-                  Нийт үнэ :{' '}
-                  {cartItems.reduce((a, c) => a + c.price * c.quantity, 0)} ₮
-                </h3>
-              </Card>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-      <Container>
-        <Row>
-          <Col md="12">
-            <div class="col text-center">
-              <Button
-                type="button"
-                variant="primary"
-                size="large"
-                onClick={checkoutHandler}
-                disabled={cartItems.length === 0}
-              >
-                Захиалга хийх
-              </Button>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+        </div>
+        <div class="col-4">
+          <Card className="justify-content-between">
+            <h5>
+              Нийт бараа : {cartItems.reduce((a, c) => a + c.quantity, 0)}{' '}
+            </h5>
+          </Card>
+          <Card>
+            <h5>Хүргэлт 5000 ₮</h5>
+          </Card>
+          <Card>
+            <h5>
+              Нийт үнэ :{' '}
+              {cartItems.reduce((a, c) => a + c.price * c.quantity, 0)} ₮
+            </h5>
+          </Card>
+        </div>
+        <div class="hemjee">
+          <div class="col-md-2">
+            <Button
+              type="button"
+              variant="primary"
+              className="btn-block"
+              onClick={checkoutHandler}
+              disabled={cartItems.length === 0}
+            >
+              Захиалга хийх
+            </Button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

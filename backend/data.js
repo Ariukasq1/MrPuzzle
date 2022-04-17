@@ -32,7 +32,7 @@ const data = {
       brand: 'Rubiks',
       rating: 4.5,
       numReviews: 10,
-      description: 'high quality shirt',
+      description: 'Хурдны шоо',
     },
     {
       // _id: '2',
@@ -45,7 +45,7 @@ const data = {
       brand: 'Gan',
       rating: 4.0,
       numReviews: 10,
-      description: 'high quality product',
+      description: 'Сайн чанарын хурдны шоо',
     },
     {
       // _id: '3',
@@ -58,7 +58,7 @@ const data = {
       brand: 'Yuxin',
       rating: 4.5,
       numReviews: 14,
-      description: 'high quality product',
+      description: 'Сайн чанарын хурдны шоо',
     },
     {
       // _id: '4',
@@ -71,7 +71,7 @@ const data = {
       brand: 'Gan',
       rating: 4.5,
       numReviews: 10,
-      description: 'high quality product',
+      description: 'Сайн чанарын хурдны шоо',
     },
     {
       // _id: '1',
@@ -84,7 +84,7 @@ const data = {
       brand: 'Rubiks',
       rating: 4.5,
       numReviews: 10,
-      description: 'high quality shirt',
+      description: 'Сайн чанарын хурдны шоо',
     },
     {
       // _id: '2',
@@ -97,7 +97,7 @@ const data = {
       brand: 'Gan',
       rating: 4.0,
       numReviews: 10,
-      description: 'high quality product',
+      description: 'Сайн чанарын хурдны шоо',
     },
     {
       // _id: '3',
@@ -110,7 +110,7 @@ const data = {
       brand: 'Yuxin',
       rating: 4.5,
       numReviews: 14,
-      description: 'high quality product',
+      description: 'Сайн чанарын хурдны шоо',
     },
     {
       // _id: '4',
@@ -123,7 +123,7 @@ const data = {
       brand: 'Gan',
       rating: 4.5,
       numReviews: 10,
-      description: 'high quality product',
+      description: 'Сайн чанарын хурдны шоо',
     },
     {
       // _id: '1',
@@ -136,7 +136,7 @@ const data = {
       brand: 'Rubiks',
       rating: 4.5,
       numReviews: 10,
-      description: 'high quality shirt',
+      description: 'Сайн чанарын хурдны шоо',
     },
     {
       // _id: '2',
@@ -149,7 +149,7 @@ const data = {
       brand: 'Gan',
       rating: 4.0,
       numReviews: 10,
-      description: 'high quality product',
+      description: 'Сайн чанарын хурдны шоо',
     },
     {
       // _id: '3',
@@ -162,7 +162,7 @@ const data = {
       brand: 'Yuxin',
       rating: 4.5,
       numReviews: 14,
-      description: 'high quality product',
+      description: 'Сайн чанарын хурдны шоо',
     },
     {
       // _id: '4',
@@ -175,7 +175,7 @@ const data = {
       brand: 'Gan',
       rating: 4.5,
       numReviews: 10,
-      description: 'high quality product',
+      description: 'Сайн чанарын хурдны шоо',
     },
   ],
 };

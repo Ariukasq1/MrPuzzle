@@ -16,9 +16,7 @@ export default function ShippingAddressScreen() {
   const [fullName, setFullName] = useState(shippingAddress.fullName || '');
   const [address, setAddress] = useState(shippingAddress.address || '');
   const [city, setCity] = useState(shippingAddress.city || '');
-  const [postalCode, setPostalCode] = useState(
-    shippingAddress.postalCode || ''
-  );
+
   useEffect(() => {
     if (!userInfo) {
       navigate('/signin?redirect=/shipping');
@@ -33,7 +31,6 @@ export default function ShippingAddressScreen() {
         fullName,
         address,
         city,
-        postalCode,
         country,
       },
     });
@@ -43,7 +40,6 @@ export default function ShippingAddressScreen() {
         fullName,
         address,
         city,
-        postalCode,
         country,
       })
     );
@@ -52,67 +48,171 @@ export default function ShippingAddressScreen() {
   return (
     <div>
       <Helmet>
-        <title>Хүргэлтийн мэдээлэл</title>
+        <title>Хүргэлтийн хаяг</title>
       </Helmet>
 
       <CheckoutSteps step1 step2></CheckoutSteps>
-      <div className="container small-container">
-        <h1 className="my-3">Хүргэлтийн мэдээлэл</h1>
+      <div className="container">
+        <h1 className="my-3">Хүргэлтийн хаяг</h1>
+
         <Form onSubmit={submitHandler}>
-          <Form.Group className="mb-3" controlId="fullName">
-            <Form.Label>Бүтэн нэр</Form.Label>
-            <Form.Control
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              required
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="address">
-            <Form.Label>Хаяг</Form.Label>
-            <Form.Control
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              required
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="city">
-            <Form.Label>Аймаг/дүүрэг</Form.Label>
-            <Form.Control
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              required
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="postalCode">
-            <Form.Label>Постал код</Form.Label>
-            <Form.Control
-              value={postalCode}
-              onChange={(e) => setPostalCode(e.target.value)}
-              required
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="country">
-            <Form.Label>Хот</Form.Label>
-            <Form.Control
-              value={country}
-              onChange={(e) => setCountry(e.target.value)}
-              required
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="country">
-            <Form.Label>Утасны дугаар</Form.Label>
-            <Form.Control
-              value={country}
-              onChange={(e) => setCountry(e.target.value)}
-              required
-            />
-          </Form.Group>
-          <div className="mb-3">
-            <Button variant="primary" type="submit">
-              Үргэлжлүүлэх
-            </Button>
-          </div>
+          <form>
+            <div class="row justify-content-start">
+              <div class="col-4">
+                <Form.Group className="mb-3" controlId="fullName">
+                  <Form.Label>Нэр</Form.Label>
+                  <Form.Control
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    required
+                  />
+                </Form.Group>
+              </div>
+              <div class="col-4">
+                <Form.Group className="mb-3" controlId="fullName">
+                  <Form.Label>Овог</Form.Label>
+                  <Form.Control
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    required
+                  />
+                </Form.Group>
+              </div>
+            </div>
+            <div class="row justify-content-start">
+              <div class="col-4">
+                <Form.Group className="mb-3" controlId="fullName">
+                  <Form.Label>И-Мэйл</Form.Label>
+                  <Form.Control
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    required
+                  />
+                </Form.Group>
+              </div>
+              <div class="col-4">
+                <Form.Group className="mb-3" controlId="fullName">
+                  <Form.Label>Утасны дугаар</Form.Label>
+                  <Form.Control
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    required
+                  />
+                </Form.Group>
+              </div>
+            </div>
+            <div class="row justify-content-start">
+              <div class="col-8">
+                <Form.Group className="mb-3" controlId="address">
+                  <Form.Label>Хаяг</Form.Label>
+                  <Form.Control
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    required
+                  />
+                </Form.Group>
+              </div>
+            </div>
+            <div class="row justify-content-start">
+              <div class="col-4">
+                <Form.Group className="mb-3" controlId="address">
+                  <div class="form-group">
+                    <Form.Label>Хот/Аймаг</Form.Label>
+
+                    <select class="form-control" id="exampleFormControlSelect1">
+                      <option>Улаанбаатар хот</option>
+                      <option>Архангай аймаг</option>
+                      <option>Баян-өлгий аймаг</option>
+                      <option>Баянхонгор аймаг</option>
+                      <option>Булган аймаг</option>
+                      <option>Говь-алтай аймаг</option>
+                      <option>Дорноговь аймаг</option>
+                      <option>Дорнод аймаг</option>
+                      <option>Дундговь аймаг</option>
+                      <option>Завхан аймаг</option>
+                      <option>Өвөрхангай аймаг</option>
+                      <option>Өмнөговь аймаг</option>
+                      <option>Сүхбаатар аймаг</option>
+                      <option>Сэлэнгэ аймаг</option>
+                      <option>Төв аймаг</option>
+                      <option>Увс аймаг</option>
+                      <option>Ховд аймаг</option>
+                      <option>Хөвсгөл аймаг</option>
+                      <option>Хэнтий аймаг</option>
+                      <option>Дархан-уул аймаг</option>
+                      <option>Орхон аймаг</option>
+                      <option>Говьсүмбэр аймаг</option>
+                    </select>
+                  </div>
+                </Form.Group>
+              </div>
+              <div class="col-4">
+                <Form.Group className="mb-3" controlId="address">
+                  <div class="form-group">
+                    <Form.Label>Дүүрэг/Сум</Form.Label>
+                    <Form.Control
+                      value={country}
+                      onChange={(e) => setCountry(e.target.value)}
+                      required
+                    />
+                  </div>
+                </Form.Group>
+              </div>
+            </div>
+
+            <div class="row justify-content-start">
+              <div class="col-4">
+                <Form.Group className="mb-3" controlId="address">
+                  <div class="form-group">
+                    <Form.Label>Хороо/Баг</Form.Label>
+                    <Form.Control
+                      value={country}
+                      onChange={(e) => setCountry(e.target.value)}
+                      required
+                    />
+                  </div>
+                </Form.Group>
+              </div>
+            </div>
+            <div class="row justify-content-start">
+              <div class="col-8">
+                <Form.Group className="mb-3" controlId="address">
+                  <div class="form-group">
+                    <Form.Label>Дэлгэрэнгүй хаяг</Form.Label>
+
+                    <textarea
+                      class="form-control"
+                      id="exampleFormControlTextarea1"
+                      rows="3"
+                    ></textarea>
+                  </div>
+                </Form.Group>
+              </div>
+            </div>
+
+            <div class="row justify-content-start">
+              <div class="col-2">
+                <div className="mb-3">
+                  <Button variant="primary" type="submit">
+                    Үргэлжлүүлэх
+                  </Button>
+                </div>
+              </div>
+              <div class="col-1">
+                <div className="mb-3">
+                  <Button variant="primary" type="submit">
+                    Буцах
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </form>
         </Form>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col"></div>
+        </div>
       </div>
     </div>
   );
