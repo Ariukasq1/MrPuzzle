@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="row mt-3">
             <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
               <h6 className="text-uppercase fw-bold mb-4">
-                <i></i>Mind games shop
+                <i></i>MR Puzzle Shop
               </h6>
               <div>
                 <a

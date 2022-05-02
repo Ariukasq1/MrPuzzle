@@ -42,8 +42,11 @@ const data = {
       price: 65000,
       countInStock: 15,
       brand: 'Yuxin',
-      description: 'Сайн чанарын хурдны шоо',
-    },
+      description: 'Сайн чанарын хурдны Шоо',
+    },  // ene dotor shoonuudinha medeelliig oruulna.
+        // saynii public iin images dotor zurag nuudaa oruulna
+        //tegeed image: '/images/zuragniihaa ner orgotgoliig bichne'
+
 
     {
       // _id: '1',
@@ -148,7 +151,15 @@ const data = {
       description: 'Сайн чанарын хурдны шоо',
     },
     {
-      // _id: '4',
+      name: '4x4x4 cube',
+      slug: '4x4x4-cube',
+      category: 'Шоо',
+      image: '/images/p4.jpeg',
+      price: 90000,
+      countInStock: 0,
+      brand: 'Gan',
+      description: 'Сайн чанарын хурдны шоо',
+    },{
       name: '4x4x4 cube',
       slug: '4x4x4-cube',
       category: 'Шоо',
