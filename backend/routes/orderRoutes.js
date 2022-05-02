@@ -1,11 +1,39 @@
 import express from 'express';
-const orderRouter = express.Router();
+import expressAsyncHandler from 'express-async-handler';
+import Order from '../models/orderModel.js';
+import { isAuth } from '../utils.js';
 
-orderRouter.get(
-  '/mine',
+const orderRouter = express.Router();
+orderRouter.post(
+  '/',
   isAuth,
   expressAsyncHandler(async (req, res) => {
-    const orders = await Order.find({ user: req.user._id });
-    res.send(orders);
+    const newOrder = new Order({
+      orderItems: req.body.orderItems.map((x) => ({ ...x, product: x._id })),
+      shippingAddress: req.body.shippingAddress,
+      paymentMethod: req.body.paymentMethod,
+      itemsPrice: req.body.itemsPrice,
+      shippingPrice: req.body.shippingPrice,
+      totalPrice: req.body.totalPrice,
+      user: req.user._id,
+    });
+
+    const order = await newOrder.save();
+    res.status(201).send({ message: 'Шинэ захиалга үүслээ', order });
   })
 );
+
+orderRouter.get(
+  '/:id',
+  isAuth,
+  expressAsyncHandler(async (req, res) => {
+    const order = await Order.findById(req.params.id);
+    if (order) {
+      res.send(order);
+    } else {
+      res.status(404).send({ message: 'Захиалга олдсонгүй' });
+    }
+  })
+);
+
+export default orderRouter;

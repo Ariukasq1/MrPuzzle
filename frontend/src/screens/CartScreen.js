@@ -84,7 +84,7 @@ export default function CartScreen() {
                         <i className="fas fa-plus-circle"></i>
                       </Button>
                     </Col>
-                    <Col md={3}>${item.price}</Col>
+                    <Col md={3}>{item.price}₮</Col>
                     <Col md={2}>
                       <Button
                         onClick={() => removeItemHandler(item)}
@@ -114,18 +114,30 @@ export default function CartScreen() {
               {cartItems.reduce((a, c) => a + c.price * c.quantity, 0)} ₮
             </h5>
           </Card>
-        </div>
-        <div class="hemjee">
-          <div class="col-md-2">
+          <div class="d-grid gap-2 mt-3">
             <Button
+              class="btn btn-primary"
               type="button"
               variant="primary"
-              className="btn-block"
+              className="btn "
               onClick={checkoutHandler}
               disabled={cartItems.length === 0}
             >
               Захиалга хийх
             </Button>
+          </div>
+
+          <Link to="/" className="deco">
+            <div class="d-grid gap-2 mt-3">
+              <Button variant="primary" class="btn btn-primary" type="button">
+                Буцах
+              </Button>
+            </div>
+          </Link>
+
+          <div class="col-md-12"></div>
+          <div class="col-1">
+            <div className="mb-3"></div>
           </div>
         </div>
       </div>

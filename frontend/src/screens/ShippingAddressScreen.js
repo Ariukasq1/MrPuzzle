@@ -13,38 +13,54 @@ export default function ShippingAddressScreen() {
     userInfo,
     cart: { shippingAddress },
   } = state;
-  const [fullName, setFullName] = useState(shippingAddress.fullName || '');
-  const [address, setAddress] = useState(shippingAddress.address || '');
+  const [firstName, setFirstName] = useState(shippingAddress.firstName || '');
+  const [lastName, setLastName] = useState(shippingAddress.lastName || '');
+  const [email, setEmail] = useState(shippingAddress.email || '');
+  const [phone, setPhone] = useState(shippingAddress.phone || '');
   const [city, setCity] = useState(shippingAddress.city || '');
+  const [duureg, setDuureg] = useState(shippingAddress.duureg || '');
+  const [khoroo, setKhoroo] = useState(shippingAddress.khoroo || '');
+  const [address, setAddress] = useState(shippingAddress.address || '');
 
   useEffect(() => {
     if (!userInfo) {
       navigate('/signin?redirect=/shipping');
     }
   }, [userInfo, navigate]);
-  const [country, setCountry] = useState(shippingAddress.country || '');
+
   const submitHandler = (e) => {
     e.preventDefault();
     ctxDispatch({
       type: 'SAVE_SHIPPING_ADDRESS',
       payload: {
-        fullName,
+        firstName,
+        lastName,
+        email,
+        phone,
         address,
         city,
-        country,
+        duureg,
+        khoroo,
+        location: shippingAddress.location,
       },
     });
     localStorage.setItem(
       'shippingAddress',
       JSON.stringify({
-        fullName,
-        address,
+        firstName,
+        lastName,
+        email,
+        phone,
         city,
-        country,
+        duureg,
+        khoroo,
+        address,
+        location: shippingAddress.location,
       })
     );
     navigate('/payment');
   };
+
   return (
     <div>
       <Helmet>
@@ -52,167 +68,112 @@ export default function ShippingAddressScreen() {
       </Helmet>
 
       <CheckoutSteps step1 step2></CheckoutSteps>
-      <div className="container">
+      <div className="container small-container">
         <h1 className="my-3">Хүргэлтийн хаяг</h1>
-
         <Form onSubmit={submitHandler}>
-          <form>
-            <div class="row justify-content-start">
-              <div class="col-4">
-                <Form.Group className="mb-3" controlId="fullName">
-                  <Form.Label>Нэр</Form.Label>
-                  <Form.Control
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    required
-                  />
-                </Form.Group>
-              </div>
-              <div class="col-4">
-                <Form.Group className="mb-3" controlId="fullName">
-                  <Form.Label>Овог</Form.Label>
-                  <Form.Control
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    required
-                  />
-                </Form.Group>
-              </div>
+          <div className="row">
+            <div className="col-6">
+              <Form.Group className="mb-3" controlId="firstName">
+                <Form.Label>Нэр</Form.Label>
+                <Form.Control
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  required
+                />
+              </Form.Group>
             </div>
-            <div class="row justify-content-start">
-              <div class="col-4">
-                <Form.Group className="mb-3" controlId="fullName">
-                  <Form.Label>И-Мэйл</Form.Label>
-                  <Form.Control
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    required
-                  />
-                </Form.Group>
-              </div>
-              <div class="col-4">
-                <Form.Group className="mb-3" controlId="fullName">
-                  <Form.Label>Утасны дугаар</Form.Label>
-                  <Form.Control
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    required
-                  />
-                </Form.Group>
-              </div>
+            <div className="col-6">
+              <Form.Group className="mb-3" controlId="lastName">
+                <Form.Label>Овог</Form.Label>
+                <Form.Control
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  required
+                />
+              </Form.Group>
             </div>
-            <div class="row justify-content-start">
-              <div class="col-8">
-                <Form.Group className="mb-3" controlId="address">
-                  <Form.Label>Хаяг</Form.Label>
-                  <Form.Control
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                    required
-                  />
-                </Form.Group>
-              </div>
+          </div>
+          <div className="row">
+            <div className="col-6">
+              <Form.Group className="mb-3" controlId="email">
+                <Form.Label>Имэйл</Form.Label>
+                <Form.Control
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </Form.Group>
             </div>
-            <div class="row justify-content-start">
-              <div class="col-4">
-                <Form.Group className="mb-3" controlId="address">
-                  <div class="form-group">
-                    <Form.Label>Хот/Аймаг</Form.Label>
+            <div className="col-6">
+              <Form.Group className="mb-3" controlId="phone">
+                <Form.Label>Утасны дугаар</Form.Label>
+                <Form.Control
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  required
+                />
+              </Form.Group>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-6">
+              <Form.Group className="mb-3" controlId="city">
+                <Form.Label>Хот/Аймаг</Form.Label>
+                <Form.Control
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  required
+                />
+              </Form.Group>
+            </div>
+            <div className="col-6">
+              <Form.Group className="mb-3" controlId="duureg">
+                <Form.Label>Дүүрэг/Сум</Form.Label>
+                <Form.Control
+                  value={duureg}
+                  onChange={(e) => setDuureg(e.target.value)}
+                  required
+                />
+              </Form.Group>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-6">
+              <Form.Group className="mb-3" controlId="khoroo">
+                <Form.Label>Хороо/Баг</Form.Label>
+                <Form.Control
+                  value={khoroo}
+                  onChange={(e) => setKhoroo(e.target.value)}
+                  required
+                />
+              </Form.Group>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-12">
+              <Form.Group className="mb-3" controlId="address">
+                <Form.Label>Дэлгэрэнгүй хаяг</Form.Label>
 
-                    <select class="form-control" id="exampleFormControlSelect1">
-                      <option>Улаанбаатар хот</option>
-                      <option>Архангай аймаг</option>
-                      <option>Баян-өлгий аймаг</option>
-                      <option>Баянхонгор аймаг</option>
-                      <option>Булган аймаг</option>
-                      <option>Говь-алтай аймаг</option>
-                      <option>Дорноговь аймаг</option>
-                      <option>Дорнод аймаг</option>
-                      <option>Дундговь аймаг</option>
-                      <option>Завхан аймаг</option>
-                      <option>Өвөрхангай аймаг</option>
-                      <option>Өмнөговь аймаг</option>
-                      <option>Сүхбаатар аймаг</option>
-                      <option>Сэлэнгэ аймаг</option>
-                      <option>Төв аймаг</option>
-                      <option>Увс аймаг</option>
-                      <option>Ховд аймаг</option>
-                      <option>Хөвсгөл аймаг</option>
-                      <option>Хэнтий аймаг</option>
-                      <option>Дархан-уул аймаг</option>
-                      <option>Орхон аймаг</option>
-                      <option>Говьсүмбэр аймаг</option>
-                    </select>
-                  </div>
-                </Form.Group>
-              </div>
-              <div class="col-4">
-                <Form.Group className="mb-3" controlId="address">
-                  <div class="form-group">
-                    <Form.Label>Дүүрэг/Сум</Form.Label>
-                    <Form.Control
-                      value={country}
-                      onChange={(e) => setCountry(e.target.value)}
-                      required
-                    />
-                  </div>
-                </Form.Group>
-              </div>
+                <textarea
+                  italic={true}
+                  placeholder="Б.З.Д-ийн 2-р хороо 83-р байр 2-р орц код:1234"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  required
+                  class="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                ></textarea>
+              </Form.Group>
             </div>
+          </div>
 
-            <div class="row justify-content-start">
-              <div class="col-4">
-                <Form.Group className="mb-3" controlId="address">
-                  <div class="form-group">
-                    <Form.Label>Хороо/Баг</Form.Label>
-                    <Form.Control
-                      value={country}
-                      onChange={(e) => setCountry(e.target.value)}
-                      required
-                    />
-                  </div>
-                </Form.Group>
-              </div>
-            </div>
-            <div class="row justify-content-start">
-              <div class="col-8">
-                <Form.Group className="mb-3" controlId="address">
-                  <div class="form-group">
-                    <Form.Label>Дэлгэрэнгүй хаяг</Form.Label>
-
-                    <textarea
-                      class="form-control"
-                      id="exampleFormControlTextarea1"
-                      rows="3"
-                    ></textarea>
-                  </div>
-                </Form.Group>
-              </div>
-            </div>
-
-            <div class="row justify-content-start">
-              <div class="col-2">
-                <div className="mb-3">
-                  <Button variant="primary" type="submit">
-                    Үргэлжлүүлэх
-                  </Button>
-                </div>
-              </div>
-              <div class="col-1">
-                <div className="mb-3">
-                  <Button variant="primary" type="submit">
-                    Буцах
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </form>
+          <div className="mb-3">
+            <Button variant="primary" type="submit">
+              Үргэлжлүүлэх
+            </Button>
+          </div>
         </Form>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col"></div>
-        </div>
       </div>
     </div>
   );

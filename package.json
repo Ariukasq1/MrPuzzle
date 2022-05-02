@@ -1,0 +1,20 @@
+{
+  "name": "mrpuzzle-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ariukasq1/MrPuzzle.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ariukasq1/MrPuzzle/issues"
+  },
+  "homepage": "https://github.com/Ariukasq1/MrPuzzle#readme"
+}

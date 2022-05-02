@@ -24,6 +24,11 @@ import Footer from './components/Footer';
 import Button from 'react-bootstrap/Button';
 import { getError } from './utils';
 import axios from 'axios';
+import PaymentMethodScreen from './screens/PaymentMethodScreen';
+import PlaceOrderScreen from './screens/PlaceOrderScreen';
+import OrderScreen from './screens/OrderScreen';
+import SearchScreen from './screens/SearchScreen';
+import ShippingPrivacy from './screens/ShippingPrivacy';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -32,6 +37,7 @@ function App() {
     ctxDispatch({ type: 'USER_SIGNOUT' });
     localStorage.removeItem('userInfo');
     localStorage.removeItem('shippingAddress');
+    localStorage.removeItem('paymentMethod');
     window.location.href = '/signin';
   };
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
@@ -58,7 +64,7 @@ function App() {
         }
       >
         <ToastContainer position="bottom-center" limit={1} />
-        <header>
+        <header className="nvbar">
           <Navbar bg="dark" variant="dark" expand="lg">
             <Container>
               <Button
@@ -68,7 +74,7 @@ function App() {
                 <i className="fas fa-bars"></i>
               </Button>
               <LinkContainer to="/">
-                <Navbar.Brand>Mr Puzzle Shop</Navbar.Brand>
+                <Navbar.Brand>Mind games shop</Navbar.Brand>
               </LinkContainer>
 
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -146,14 +152,13 @@ function App() {
             ))}
           </Nav>
         </div>
-
         <main>
           <Container className="mt-3">
             <Routes>
               <Route path="/product/:slug" element={<ProductScreen />} />
               <Route path="/cart" element={<CartScreen />} />
+              <Route path="/search" element={<SearchScreen />} />
               <Route path="/signin" element={<SigninScreen />} />
-              <Route path="/" element={<HomeScreen />} />
               <Route path="/profile" element={<ProfileScreen />} />
               <Route
                 path="/orderhistory"
@@ -163,9 +168,18 @@ function App() {
                 path="/shipping"
                 element={<ShippingAddressScreen />}
               ></Route>
+              <Route path="/payment" element={<PaymentMethodScreen />}></Route>
               <Route path="/signup" element={<SignupScreen />} />
+              <Route path="/placeorder" element={<PlaceOrderScreen />} />
+              <Route path="/order/:id" element={<OrderScreen />}></Route>
+              <Route
+                path="/shippingprivacy"
+                element={<ShippingPrivacy />}
+              ></Route>
+              <Route path="/" element={<HomeScreen />} />
             </Routes>
           </Container>
+          <Routes></Routes>
         </main>
         <Footer />
       </div>

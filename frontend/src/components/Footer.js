@@ -1,5 +1,6 @@
 import React from 'react';
 import { MDBFooter } from 'mdb-react-ui-kit';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -9,7 +10,7 @@ export default function Footer() {
           <div className="row mt-3">
             <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
               <h6 className="text-uppercase fw-bold mb-4">
-                <i></i>Mr Puzzle Shop
+                <i></i>Mind games shop
               </h6>
               <div>
                 <a
@@ -37,11 +38,9 @@ export default function Footer() {
               <h6 className="text-uppercase fw-bold mb-4">
                 Хэрэглэгчийн булан
               </h6>
-              <p>
-                <a href="#!" className="text-reset">
-                  Хүргэлтийн нөхцөл
-                </a>
-              </p>
+              <Link to="/ShippingPrivacy" className="text-reset">
+                <p>Хүргэлтийн нөхцөл</p>
+              </Link>
               <p>
                 <a href="#!" className="text-reset">
                   Хэрхэн захиалга хийх

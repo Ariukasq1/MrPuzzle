@@ -8,6 +8,7 @@ import { Helmet } from 'react-helmet-async';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import Slider from '../components/Carousel';
+import Container from 'react-bootstrap/esm/Container';
 // import data from '../data';
 
 const reducer = (state, action) => {
@@ -48,36 +49,27 @@ function HomeScreen() {
   return (
     <div>
       <Helmet>
-        <title>Mr Puzzle Shop</title>
+        <title>Mind Games shop</title>
       </Helmet>
+      <Slider />
 
-      <h2 className="brand">Брэндүүд</h2>
-      {/* <div>
-        <Row>
-          {products.map((product) => (
-            <Col key={product.slug} sm={6} md={4} lg={3} className="mb-3">
-              <Product product={product}></Product>
-            </Col>
-          ))}
-        </Row>
-      </div> */}
-      <div className="products">
-        {loading ? (
-          <LoadingBox />
-        ) : error ? (
-          <MessageBox variant="danger">{error}</MessageBox>
-        ) : (
-          <Row>
-            {products.map((product) => (
-              <Col key={product.slug} sm={6} md={4} lg={3} className="mb-3">
-                <Product product={product}></Product>
-              </Col>
-            ))}
-          </Row>
-        )}
-
-        <Slider />
-      </div>
+      <Container className="p-5">
+        <div className="products">
+          {loading ? (
+            <LoadingBox />
+          ) : error ? (
+            <MessageBox variant="danger">{error}</MessageBox>
+          ) : (
+            <Row>
+              {products.map((product) => (
+                <Col key={product.slug} sm={6} md={4} lg={3} className="mb-3">
+                  <Product product={product}></Product>
+                </Col>
+              ))}
+            </Row>
+          )}
+        </div>
+      </Container>
     </div>
   );
 }
