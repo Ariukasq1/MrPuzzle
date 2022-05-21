@@ -1,0 +1,26 @@
+export const TYPES = [
+  { label: 'Улаанбаатар хот', value: 'ulaanbaatar' },
+  { label: 'Дархан-уул аймаг', value: 'darhan' },
+  { label: 'Архангай аймаг', value: 'arkhangai' },
+  { label: 'Баян-өлгий аймаг', value: 'bayanolgii' },
+  { label: 'Баянхонгор аймаг', value: 'bayanhongor' },
+  { label: 'Булган аймаг', value: 'bulgan' },
+  { label: 'Говь-алтай аймаг', value: 'govialtai' },
+  { label: 'Дорноговь аймаг', value: 'dornogovi' },
+  { label: 'Дорнод аймаг', value: 'dornod' },
+  { label: 'Дундговь аймаг', value: 'dundgovi' },
+  { label: 'Завхан аймаг', value: 'zawhan' },
+  { label: 'Өвөрхангай аймаг', value: 'oworhangai' },
+  { label: 'Өмнөговь аймаг', value: 'omnogovi' },
+  { label: 'Сүхбаатар аймаг', value: 'suhbaatar' },
+  { label: 'Сэлэнгэ аймаг', value: 'selenge' },
+  { label: 'Төв аймаг', value: 'tow' },
+  { label: 'Увс аймаг', value: 'uws' },
+  { label: 'Ховд аймаг', value: 'howd' },
+  { label: 'Хөвсгөл аймаг', value: 'huwsgul' },
+  { label: 'Хэнтий аймаг', value: 'hentii' },
+  { label: 'Орхон аймаг', value: 'orhon' },
+  { label: 'Говьсүмбэр аймаг', value: 'govisumber' },
+];
+
+export const SUMUUD = [{ label: 'Баянгол', value: 'bayangol' }];

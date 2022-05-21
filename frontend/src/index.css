@@ -110,3 +110,17 @@ main {
 .text-bold {
   font-weight: bold;
 }
+.nohtsol {
+  text-align: center;
+}
+.text-reset {
+  text-decoration: none;
+}
+.uldegdel {
+  color: firebrick;
+}
+.card-body {
+  color: #000000;
+  text-decoration: none;
+  font-family: Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}

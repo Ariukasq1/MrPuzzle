@@ -74,7 +74,7 @@ function App() {
                 <i className="fas fa-bars"></i>
               </Button>
               <LinkContainer to="/">
-                <Navbar.Brand>Mind games shop</Navbar.Brand>
+                <Navbar.Brand>MR Puzzle Shop</Navbar.Brand>
               </LinkContainer>
 
               <Navbar.Toggle aria-controls="basic-navbar-nav" />

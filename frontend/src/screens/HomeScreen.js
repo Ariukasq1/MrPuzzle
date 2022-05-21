@@ -49,7 +49,7 @@ function HomeScreen() {
   return (
     <div>
       <Helmet>
-        <title>Mind Games shop</title>
+        <title>MR Puzzle Shop</title>
       </Helmet>
       <Slider />
 

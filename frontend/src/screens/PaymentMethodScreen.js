@@ -45,7 +45,7 @@ export default function PaymentMethodScreen() {
               value="QPay"
               checked={paymentMethodName === 'QPay'}
               onChange={(e) => setPaymentMethod(e.target.value)}
-              disabled={true}
+              disabled={false}
             />
           </div>
           <div className="mb-3">

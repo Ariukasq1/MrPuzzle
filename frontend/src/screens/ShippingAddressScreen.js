@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import { Store } from '../Store';
 import CheckoutSteps from '../components/CheckoutSteps';
+import { TYPES } from '../constants';
 
 export default function ShippingAddressScreen() {
   const navigate = useNavigate();
@@ -119,11 +120,11 @@ export default function ShippingAddressScreen() {
             <div className="col-6">
               <Form.Group className="mb-3" controlId="city">
                 <Form.Label>Хот/Аймаг</Form.Label>
-                <Form.Control
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
-                  required
-                />
+                <Form.Select onChange={(e) => setCity(e.target.value)} required>
+                  {TYPES.map((type) => (
+                    <option value={type.value}>{type.label}</option>
+                  ))}
+                </Form.Select>
               </Form.Group>
             </div>
             <div className="col-6">
