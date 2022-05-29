@@ -54,7 +54,7 @@ export default function CartScreen() {
               {cartItems.map((item) => (
                 <ListGroup.Item key={item._id}>
                   <Row className="align-items-center">
-                    <Col md={4}>
+                    <Col md={5}>
                       <img
                         src={item.image}
                         alt={item.name}
@@ -65,8 +65,8 @@ export default function CartScreen() {
                       </Link>
                     </Col>
 
-                    <Col md={3} className="uldegdel">
-                      Боломжит үлдэгдэл: 15
+                    <Col md={2} className="uldegdel">
+                      Боломжит үлдэгдэл: {item.countInStock}
                     </Col>
                     <Col md={2}>
                       <Button
@@ -89,7 +89,7 @@ export default function CartScreen() {
                         <i className="fas fa-plus-circle"></i>
                       </Button>
                     </Col>
-                    <Col md={2}>{item.price}₮</Col>
+                    <Col md={2}>{item.price.toLocaleString()}₮</Col>
 
                     <Col md={1}>
                       <Button
@@ -111,13 +111,14 @@ export default function CartScreen() {
               Нийт бараа : {cartItems.reduce((a, c) => a + c.quantity, 0)}{' '}
             </h5>
           </Card>
-          <Card>
-            <h5>Хүргэлт 5000 ₮</h5>
-          </Card>
+
           <Card>
             <h5>
               Нийт үнэ :{' '}
-              {cartItems.reduce((a, c) => a + c.price * c.quantity, 0)} ₮
+              {cartItems
+                .reduce((a, c) => a + c.price * c.quantity, 0)
+                .toLocaleString()}{' '}
+              ₮
             </h5>
           </Card>
           <div class="d-grid gap-2 mt-3">

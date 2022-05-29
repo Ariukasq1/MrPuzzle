@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useReducer } from 'react';
+import React, { useContext, useEffect, useReducer, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate, useParams } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
@@ -59,6 +59,7 @@ export default function OrderScreen() {
       fetchOrder();
     }
   }, [order, userInfo, orderId, navigate]);
+
   return loading ? (
     <LoadingBox></LoadingBox>
   ) : error ? (

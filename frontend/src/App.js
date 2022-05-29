@@ -62,32 +62,49 @@ function App() {
             ? 'd-flex flex-column site-container active-cont'
             : 'd-flex flex-column site-container'
         }
+        id="sidebar"
       >
         <ToastContainer position="bottom-center" limit={1} />
         <header className="nvbar">
-          <Navbar bg="dark" variant="dark" expand="lg">
-            <Container>
+          <Navbar bg="white" variant="faded" expand="lg">
+            <Container className="container-fluid">
               <Button
-                variant="dark"
+                className="sidebar"
                 onClick={() => setSidebarIsOpen(!sidebarIsOpen)}
               >
-                <i className="fas fa-bars"></i>
+                <i className="fas fa-bars sidebar"></i>
               </Button>
-              <LinkContainer to="/">
-                <Navbar.Brand>MR Puzzle Shop</Navbar.Brand>
-              </LinkContainer>
+              <div className="nav-menu">
+                <Link to="/">
+                  <a class="navbar-brand" href="/">
+                    <img
+                      src="/images/mr.png"
+                      width="150"
+                      height="150"
+                      class="d-inline-block align-top"
+                      alt=""
+                    />
+                    <h5>MR Puzzle Shop</h5>
+                  </a>
+                </Link>
+              </div>
 
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Row className="w-100 ">
-                  <Col span={4} className="offset-md-3">
+                  <Col span={3} className="offset-md-3">
                     <SearchBox />
                   </Col>
                   <Col span={4}>
                     {' '}
-                    <Nav className="me-auto  justify-content-end">
+                    <Nav className="bairshil">
                       <Link to="/cart" className="nav-link">
-                        Миний сагс
+                        <img
+                          src="/images/icons8-shopping-cart-100.png"
+                          alt="cart"
+                          className="shopping-cart"
+                        />
+                        Сагс
                         {cart.cartItems.length > 0 && (
                           <Badge pill bg="danger">
                             {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
@@ -95,33 +112,42 @@ function App() {
                         )}
                       </Link>
 
-                      {userInfo ? (
-                        <NavDropdown
-                          title={userInfo.name}
-                          id="basic-nav-dropdown"
-                        >
-                          <LinkContainer to="/profile">
-                            <NavDropdown.Item>
-                              Хэрэглэгчийн тохиргоо
-                            </NavDropdown.Item>
-                          </LinkContainer>
-                          <LinkContainer to="/orderhistory">
-                            <NavDropdown.Item>Захиалгын түүх</NavDropdown.Item>
-                          </LinkContainer>
-                          <NavDropdown.Divider />
-                          <Link
-                            className="dropdown-item"
-                            to="#signout"
-                            onClick={signoutHandler}
+                      <div>
+                        <img
+                          src="/images/icons8-customer-100.png"
+                          alt="user"
+                          className="shopping-cart"
+                        />
+                        {userInfo ? (
+                          <NavDropdown
+                            title={userInfo.name}
+                            id="basic-nav-dropdown"
                           >
-                            Гарах
+                            <LinkContainer to="/profile">
+                              <NavDropdown.Item>
+                                Хэрэглэгчийн тохиргоо
+                              </NavDropdown.Item>
+                            </LinkContainer>
+                            <LinkContainer to="/orderhistory">
+                              <NavDropdown.Item>
+                                Захиалгын түүх
+                              </NavDropdown.Item>
+                            </LinkContainer>
+                            <NavDropdown.Divider />
+                            <Link
+                              className="dropdown-item"
+                              to="#signout"
+                              onClick={signoutHandler}
+                            >
+                              Гарах
+                            </Link>
+                          </NavDropdown>
+                        ) : (
+                          <Link className="nav-link" to="/signin">
+                            Нэвтрэх
                           </Link>
-                        </NavDropdown>
-                      ) : (
-                        <Link className="nav-link" to="/signin">
-                          Нэвтрэх
-                        </Link>
-                      )}
+                        )}
+                      </div>
                     </Nav>
                   </Col>
                 </Row>
@@ -153,6 +179,12 @@ function App() {
           </Nav>
         </div>
         <main>
+          <Container className="mx-6">
+            <Routes>
+              <Route path="/" element={<HomeScreen />} />
+            </Routes>
+          </Container>
+
           <Container className="mt-3">
             <Routes>
               <Route path="/product/:slug" element={<ProductScreen />} />
@@ -176,7 +208,6 @@ function App() {
                 path="/shippingprivacy"
                 element={<ShippingPrivacy />}
               ></Route>
-              <Route path="/" element={<HomeScreen />} />
             </Routes>
           </Container>
           <Routes></Routes>

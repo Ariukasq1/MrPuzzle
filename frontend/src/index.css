@@ -124,3 +124,22 @@ main {
   text-decoration: none;
   font-family: Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+.shopping-cart {
+  height: 50px;
+  width: 50px;
+}
+.bairshil {
+  text-align: center;
+}
+#sidebar {
+  justify-content: flex-end;
+  color: dimgrey;
+}
+.sidebar {
+  justify-content: flex-start;
+  font-size: 25px;
+  color: #404040;
+}
+.textColor {
+  color: #000000;
+}

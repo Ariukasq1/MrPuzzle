@@ -37,7 +37,10 @@ function Product(props) {
           <Card.Title>{product.name}</Card.Title>
         </Link>
 
-        <Card.Text>{product.price}₮</Card.Text>
+        <Card.Text>
+          <div className="textColor">{product.price.toLocaleString()}₮</div>
+        </Card.Text>
+
         {product.countInStock === 0 ? (
           <Button variant="light" disabled>
             Дууссан

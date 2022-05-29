@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import { Store } from '../Store';
 import CheckoutSteps from '../components/CheckoutSteps';
-import { TYPES } from '../constants';
+import { TYPES, Duureg } from '../constants';
 
 export default function ShippingAddressScreen() {
   const navigate = useNavigate();
@@ -18,9 +18,9 @@ export default function ShippingAddressScreen() {
   const [lastName, setLastName] = useState(shippingAddress.lastName || '');
   const [email, setEmail] = useState(shippingAddress.email || '');
   const [phone, setPhone] = useState(shippingAddress.phone || '');
-  const [city, setCity] = useState(shippingAddress.city || '');
-  const [duureg, setDuureg] = useState(shippingAddress.duureg || '');
-  const [khoroo, setKhoroo] = useState(shippingAddress.khoroo || '');
+  const [city, setCity] = useState(shippingAddress.city || 'ulaanbaatar');
+  const [duureg, setDuureg] = useState(shippingAddress.duureg || 'bayanzurkh');
+  const [khoroo, setKhoroo] = useState(shippingAddress.khoroo || 'khoroo');
   const [address, setAddress] = useState(shippingAddress.address || '');
 
   useEffect(() => {
@@ -61,6 +61,8 @@ export default function ShippingAddressScreen() {
     );
     navigate('/payment');
   };
+  console.log(Duureg);
+  console.log(city);
 
   return (
     <div>
@@ -122,7 +124,12 @@ export default function ShippingAddressScreen() {
                 <Form.Label>Хот/Аймаг</Form.Label>
                 <Form.Select onChange={(e) => setCity(e.target.value)} required>
                   {TYPES.map((type) => (
-                    <option value={type.value}>{type.label}</option>
+                    <option
+                      selected={city === type.value && 'selected'}
+                      value={type.value}
+                    >
+                      {type.label}
+                    </option>
                   ))}
                 </Form.Select>
               </Form.Group>
@@ -130,11 +137,16 @@ export default function ShippingAddressScreen() {
             <div className="col-6">
               <Form.Group className="mb-3" controlId="duureg">
                 <Form.Label>Дүүрэг/Сум</Form.Label>
-                <Form.Control
-                  value={duureg}
+                <Form.Select
                   onChange={(e) => setDuureg(e.target.value)}
                   required
-                />
+                >
+                  {Duureg[city] &&
+                    Duureg[city].length > 0 &&
+                    Duureg[city].map((type) => (
+                      <option value={type.value}>{type.label}</option>
+                    ))}
+                </Form.Select>
               </Form.Group>
             </div>
           </div>
@@ -142,11 +154,16 @@ export default function ShippingAddressScreen() {
             <div className="col-6">
               <Form.Group className="mb-3" controlId="khoroo">
                 <Form.Label>Хороо/Баг</Form.Label>
-                <Form.Control
-                  value={khoroo}
+                <Form.Select
                   onChange={(e) => setKhoroo(e.target.value)}
                   required
-                />
+                >
+                  {Duureg[duureg] &&
+                    Duureg[duureg].length > 0 &&
+                    Duureg[duureg].map((type) => (
+                      <option value={type.value}>{type.label}</option>
+                    ))}
+                </Form.Select>
               </Form.Group>
             </div>
           </div>

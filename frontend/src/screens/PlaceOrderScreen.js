@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useReducer } from 'react';
+import React, { useContext, useEffect, useReducer, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
@@ -25,6 +25,7 @@ const reducer = (state, action) => {
       return state;
   }
 };
+
 export default function PlaceOrderScreen() {
   const navigate = useNavigate();
 
@@ -45,7 +46,6 @@ export default function PlaceOrderScreen() {
 
   const placeOrderHandler = async () => {
     try {
-      // window.location.href = 'https://s.qpay.mn/URUX-mh8iz';
       dispatch({ type: 'CREATE_REQUEST' });
 
       const { data } = await Axios.post(
@@ -130,7 +130,7 @@ export default function PlaceOrderScreen() {
                       <Col md={3}>
                         <span>{item.quantity}</span>
                       </Col>
-                      <Col md={3}>{item.price}₮</Col>
+                      <Col md={3}>{item.price.toLocaleString()}₮</Col>
                     </Row>
                   </ListGroup.Item>
                 ))}
@@ -147,13 +147,13 @@ export default function PlaceOrderScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>Нийт барааны үнэ</Col>
-                    <Col>{cart.itemsPrice.toFixed(2)}₮</Col>
+                    <Col>{cart.itemsPrice.toLocaleString()}₮</Col>
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Row>
                     <Col>Хүргэлт</Col>
-                    <Col>{cart.shippingPrice.toFixed(2)}₮</Col>
+                    <Col>{cart.shippingPrice.toLocaleString()}₮</Col>
                   </Row>
                 </ListGroup.Item>
 
@@ -163,7 +163,7 @@ export default function PlaceOrderScreen() {
                       <strong> Нийт төлбөр</strong>
                     </Col>
                     <Col>
-                      <strong>{cart.totalPrice.toFixed(2)}₮</strong>
+                      <strong>{cart.totalPrice.toLocaleString()}₮</strong>
                     </Col>
                   </Row>
                 </ListGroup.Item>
@@ -177,6 +177,7 @@ export default function PlaceOrderScreen() {
                     Захиалга хийх
                   </Button>
                 </div>
+
                 {loading && <LoadingBox></LoadingBox>}
 
                 <Link to="/payment" className="deco">
