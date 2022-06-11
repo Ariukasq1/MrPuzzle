@@ -11,6 +11,9 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { Store } from '../Store';
 import { getError } from '../utils';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
 
 function reducer(state, action) {
   switch (action.type) {
@@ -25,9 +28,11 @@ function reducer(state, action) {
       return state;
   }
 }
+
 export default function OrderScreen() {
   const { state } = useContext(Store);
   const { userInfo } = state;
+  const [lgShow, setLgShow] = useState(true);
 
   const params = useParams();
   const { id: orderId } = params;
@@ -60,12 +65,77 @@ export default function OrderScreen() {
     }
   }, [order, userInfo, orderId, navigate]);
 
+  //http://localhost:3000/order/629437cac26fa557a8c7de84
+
   return loading ? (
     <LoadingBox></LoadingBox>
   ) : error ? (
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
     <div>
+      <Modal
+        size="lg"
+        show={lgShow}
+        onHide={() => setLgShow(false)}
+        aria-labelledby="example-modal-sizes-title-lg"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id=""></Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="modal-title">
+          <div className="general">
+            <h5>Төлбөр төлөх заавар</h5>
+            <br />
+            <h6>Захиалгын дүн</h6>
+            <strong>
+              <h4>{order.totalPrice.toLocaleString()}₮</h4>
+            </strong>
+            <br />
+            <h6>Төлбөрийн нөхцөл</h6>
+            <h3>Дансаар шилжүүлэх</h3>
+            <br />
+          </div>
+          <div className="tomDiv">
+            <Row className="dans">
+              <Col>
+                <div className="textLine">Банк:</div>
+                <div className="textLine">Хүлээн авагч</div>
+                <div className="textLine">Дансны дугаар</div>
+              </Col>
+              <Col>
+                <div className="textLine">Хаан Банк </div>
+                <div className="textLine">Самбуудолгор Батэрдэнэ</div>
+                <div className="textLine">
+                  <strong>5400564035</strong>
+                </div>
+              </Col>
+            </Row>
+          </div>
+          <div className="tomDiv">
+            <Row className="guilgeenii-utga">
+              <Col>
+                <div className="textLine">Гүйлгээний утга:</div>
+                <div className="textLine">Шилжүүлэх дүн: </div>
+              </Col>
+              <Col>
+                <div className="textline">R1234D89 </div>
+                <div className="textline">
+                  {order.totalPrice.toLocaleString()}₮
+                </div>
+              </Col>
+            </Row>
+          </div>
+          <br />
+          <div className="delgerengui">
+            <p>
+              Төлбөр төлөгдсөний дараа таны захиалга идэвхжихийг анхаарна уу!
+              Төлбөрийг дээрх дансанд шилжүүлэх ба захиалгын R727594090 дугаарыг
+              гүйлгээний утга дээр бичнэ үү. Мөн та өөрийн смарт банкны
+              програмыг ашиглан QR кодоор төлбөрөө төлөх боломжтой
+            </p>
+          </div>
+        </Modal.Body>
+      </Modal>
       <Helmet>
         <title>Захиалга {orderId}</title>
       </Helmet>
@@ -140,13 +210,13 @@ export default function OrderScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>Бараанууд</Col>
-                    <Col>{order.itemsPrice.toFixed(2)}₮</Col>
+                    <Col>{order.itemsPrice.toLocaleString()}₮</Col>
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Row>
                     <Col>Хүргэлт</Col>
-                    <Col>{order.shippingPrice.toFixed(2)}₮</Col>
+                    <Col>{order.shippingPrice.toLocaleString()}₮</Col>
                   </Row>
                 </ListGroup.Item>
 
@@ -156,7 +226,7 @@ export default function OrderScreen() {
                       <strong> Захиалгын нийт дүн</strong>
                     </Col>
                     <Col>
-                      <strong>{order.totalPrice.toFixed(2)}₮</strong>
+                      <strong>{order.totalPrice.toLocaleString()}₮</strong>
                     </Col>
                   </Row>
                 </ListGroup.Item>

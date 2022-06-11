@@ -29,6 +29,14 @@ import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
 import SearchScreen from './screens/SearchScreen';
 import ShippingPrivacy from './screens/ShippingPrivacy';
+import ProtectedRoute from './components/ProtectedRoute';
+import DashboardScreen from './screens/DashboardScreen';
+import AdminRoute from './components/AdminRoute';
+import ProductListScreen from './screens/ProductListScreen';
+import ProductEditScreen from './screens/ProductEditScreen';
+import OrderListScreen from './screens/OrderListScreen';
+import UserEditScreen from './screens/UserEditScreen';
+import UserListScreen from './screens/UserListScreen';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -54,6 +62,7 @@ function App() {
     };
     fetchCategories();
   }, []);
+
   return (
     <BrowserRouter>
       <div
@@ -66,93 +75,141 @@ function App() {
       >
         <ToastContainer position="bottom-center" limit={1} />
         <header className="nvbar">
-          <Navbar bg="white" variant="faded" expand="lg">
-            <Container className="container-fluid">
-              <Button
-                className="sidebar"
-                onClick={() => setSidebarIsOpen(!sidebarIsOpen)}
-              >
-                <i className="fas fa-bars sidebar"></i>
-              </Button>
-              <div className="nav-menu">
-                <Link to="/">
-                  <a class="navbar-brand" href="/">
-                    <img
-                      src="/images/mr.png"
-                      width="150"
-                      height="150"
-                      class="d-inline-block align-top"
-                      alt=""
-                    />
-                    <h5>MR Puzzle Shop</h5>
-                  </a>
-                </Link>
+          <Navbar bg="white" variant="faded" expand="lg" className="hemjee">
+            <div
+              className="d-flex align-items-center bd-highlight mb-3 example-parent hemjee1"
+              style={{ height: '200px' }}
+            >
+              <div className="item1">
+                <div className="p-2 bd-highlight col-example  ">
+                  <Button
+                    className="sidebar"
+                    onClick={() => setSidebarIsOpen(!sidebarIsOpen)}
+                  >
+                    <i className="fas fa-bars sidebar"></i>
+                  </Button>
+                </div>
+
+                <div className="p-2 bd-highlight col-example">
+                  {' '}
+                  <div className="nav-menu">
+                    <Link to="/">
+                      <a class="navbar-brand" href="/">
+                        <img
+                          src="/images/mr.png"
+                          width="150"
+                          height="150"
+                          class="d-inline-block align-top"
+                          alt=""
+                        />
+                      </a>
+                    </Link>
+                  </div>
+                </div>
+                <div className="p-2 bd-highlight col-example">
+                  {' '}
+                  <h5>MR Puzzle Shop</h5>
+                </div>
               </div>
-
-              <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse id="basic-navbar-nav">
-                <Row className="w-100 ">
-                  <Col span={3} className="offset-md-3">
-                    <SearchBox />
-                  </Col>
-                  <Col span={4}>
-                    {' '}
-                    <Nav className="bairshil">
-                      <Link to="/cart" className="nav-link">
-                        <img
-                          src="/images/icons8-shopping-cart-100.png"
-                          alt="cart"
-                          className="shopping-cart"
-                        />
-                        Сагс
-                        {cart.cartItems.length > 0 && (
-                          <Badge pill bg="danger">
-                            {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
-                          </Badge>
-                        )}
-                      </Link>
-
-                      <div>
-                        <img
-                          src="/images/icons8-customer-100.png"
-                          alt="user"
-                          className="shopping-cart"
-                        />
-                        {userInfo ? (
-                          <NavDropdown
-                            title={userInfo.name}
-                            id="basic-nav-dropdown"
-                          >
-                            <LinkContainer to="/profile">
-                              <NavDropdown.Item>
-                                Хэрэглэгчийн тохиргоо
-                              </NavDropdown.Item>
-                            </LinkContainer>
-                            <LinkContainer to="/orderhistory">
-                              <NavDropdown.Item>
-                                Захиалгын түүх
-                              </NavDropdown.Item>
-                            </LinkContainer>
-                            <NavDropdown.Divider />
-                            <Link
-                              className="dropdown-item"
-                              to="#signout"
-                              onClick={signoutHandler}
-                            >
-                              Гарах
-                            </Link>
-                          </NavDropdown>
-                        ) : (
-                          <Link className="nav-link" to="/signin">
-                            Нэвтрэх
-                          </Link>
-                        )}
-                      </div>
-                    </Nav>
-                  </Col>
-                </Row>
-              </Navbar.Collapse>
-            </Container>
+              <div className="item2">
+                <div className="p-2 bd-highlight col-example justify-content-center">
+                  <SearchBox />
+                </div>
+              </div>
+              <div className="item3">
+                <div className="p-2 bd-highlight col-example">
+                  {' '}
+                  <Link to="/cart" className="nav-link">
+                    <img
+                      src="/images/icons8-shopping-cart-100.png"
+                      alt="cart"
+                      className="shopping-cart"
+                    />
+                    Сагс
+                    {cart.cartItems.length > 0 && (
+                      <Badge pill bg="danger">
+                        {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                      </Badge>
+                    )}
+                  </Link>
+                </div>
+                <div className="p-2 bd-highlight col-example">
+                  <img
+                    src="/images/icons8-customer-100.png"
+                    alt="user"
+                    className="shopping-cart"
+                  />
+                </div>
+                <div className="p-2 bd-highlight col-example">
+                  <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                  <Navbar.Collapse id="basic-navbar-nav">
+                    <Row className="w-100 ">
+                      <Col span={4}>
+                        {' '}
+                        <Nav className="bairshil">
+                          <div>
+                            {userInfo ? (
+                              <NavDropdown
+                                title={userInfo.name}
+                                id="basic-nav-dropdown"
+                              >
+                                <LinkContainer to="/profile">
+                                  <NavDropdown.Item>
+                                    Хэрэглэгчийн тохиргоо
+                                  </NavDropdown.Item>
+                                </LinkContainer>
+                                <LinkContainer to="/orderhistory">
+                                  <NavDropdown.Item>
+                                    Захиалгын түүх
+                                  </NavDropdown.Item>
+                                </LinkContainer>
+                                <NavDropdown.Divider />
+                                <Link
+                                  className="dropdown-item"
+                                  to="#signout"
+                                  onClick={signoutHandler}
+                                >
+                                  Гарах
+                                </Link>
+                              </NavDropdown>
+                            ) : (
+                              <Link className="nav-link" to="/signin">
+                                Нэвтрэх
+                              </Link>
+                            )}
+                            {userInfo && userInfo.isAdmin && (
+                              <NavDropdown
+                                title="Админ"
+                                id="admin-nav-dropdown"
+                              >
+                                <LinkContainer to="/admin/dashboard">
+                                  <NavDropdown.Item>
+                                    Хянах самбар
+                                  </NavDropdown.Item>
+                                </LinkContainer>
+                                <LinkContainer to="/admin/products">
+                                  <NavDropdown.Item>Бараанууд</NavDropdown.Item>
+                                </LinkContainer>
+                                <LinkContainer to="/admin/orders">
+                                  <NavDropdown.Item>
+                                    Захиалгууд
+                                  </NavDropdown.Item>
+                                </LinkContainer>
+                                <LinkContainer to="/admin/users">
+                                  <NavDropdown.Item>
+                                    Хэрэглэгчид
+                                  </NavDropdown.Item>
+                                </LinkContainer>
+                              </NavDropdown>
+                            )}
+                          </div>
+                        </Nav>
+                      </Col>
+                    </Row>
+                  </Navbar.Collapse>
+                </div>
+              </div>
+            </div>
           </Navbar>
         </header>
         <div
@@ -191,22 +248,90 @@ function App() {
               <Route path="/cart" element={<CartScreen />} />
               <Route path="/search" element={<SearchScreen />} />
               <Route path="/signin" element={<SigninScreen />} />
-              <Route path="/profile" element={<ProfileScreen />} />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <ProfileScreen />
+                  </ProtectedRoute>
+                }
+              />
               <Route
                 path="/orderhistory"
-                element={<OrderHistoryScreen />}
+                element={
+                  <ProtectedRoute>
+                    <OrderHistoryScreen />
+                  </ProtectedRoute>
+                }
               ></Route>
               <Route
                 path="/shipping"
                 element={<ShippingAddressScreen />}
               ></Route>
               <Route path="/payment" element={<PaymentMethodScreen />}></Route>
+              {/* Admin Routes */}
+              <Route
+                path="/admin/dashboard"
+                element={
+                  <AdminRoute>
+                    <DashboardScreen />
+                  </AdminRoute>
+                }
+              ></Route>
+
               <Route path="/signup" element={<SignupScreen />} />
               <Route path="/placeorder" element={<PlaceOrderScreen />} />
-              <Route path="/order/:id" element={<OrderScreen />}></Route>
+              <Route
+                path="/order/:id"
+                element={
+                  <ProtectedRoute>
+                    <OrderScreen />
+                  </ProtectedRoute>
+                }
+              ></Route>
+              <Route
+                path="/admin/products"
+                element={
+                  <AdminRoute>
+                    <ProductListScreen />
+                  </AdminRoute>
+                }
+              ></Route>
               <Route
                 path="/shippingprivacy"
                 element={<ShippingPrivacy />}
+              ></Route>
+              <Route
+                path="/admin/product/:id"
+                element={
+                  <AdminRoute>
+                    <ProductEditScreen />
+                  </AdminRoute>
+                }
+              ></Route>
+              <Route
+                path="/admin/user/:id"
+                element={
+                  <AdminRoute>
+                    <UserEditScreen />
+                  </AdminRoute>
+                }
+              ></Route>
+              <Route
+                path="/admin/orders"
+                element={
+                  <AdminRoute>
+                    <OrderListScreen />
+                  </AdminRoute>
+                }
+              ></Route>
+              <Route
+                path="/admin/users"
+                element={
+                  <AdminRoute>
+                    <UserListScreen />
+                  </AdminRoute>
+                }
               ></Route>
             </Routes>
           </Container>

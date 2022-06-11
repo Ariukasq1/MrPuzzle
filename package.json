@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Ariukasq1/MrPuzzle/issues"
   },
-  "homepage": "https://github.com/Ariukasq1/MrPuzzle#readme"
+  "homepage": "https://github.com/Ariukasq1/MrPuzzle#readme",
+  "dependencies": {
+    "shortid": "^2.2.16"
+  }
 }

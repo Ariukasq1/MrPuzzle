@@ -139,7 +139,72 @@ main {
   justify-content: flex-start;
   font-size: 25px;
   color: #404040;
+  offset: md-3;
 }
 .textColor {
   color: #000000;
+}
+.modal-title {
+  text-align: center;
+  justify-content: center;
+}
+.bairshil {
+  text-align: center;
+  justify-content: center;
+}
+.hemjee {
+  width: 100%;
+}
+.hemjee1 {
+  width: 100%;
+  justify-content: space-around;
+}
+.item1 {
+  display: flex;
+  align-items: center;
+}
+.item2 {
+  display: flex;
+  align-items: center;
+}
+.item3 {
+  display: flex;
+  align-items: center;
+}
+.dans {
+  background-color: rgb(255, 237, 181);
+  width: 80%;
+  margin: auto;
+  border-radius: 5px;
+  padding: 10px;
+}
+.textLine {
+  text-align: left;
+}
+.tomDiv {
+  align-items: center;
+  padding-bottom: 10px;
+}
+.general {
+  justify-content: center;
+  align-items: center;
+}
+.guilgeenii-utga {
+  background-color: rgb(249, 249, 249);
+  width: 80%;
+  margin: auto;
+  border-radius: 5px;
+}
+.textline {
+  text-align: right;
+  color: rgb(245, 108, 115);
+  font-weight: 500;
+  line-height: 1.2;
+}
+.delgerengui {
+  text-align: justify;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-left: 50px;
+  padding-right: 50px;
 }
