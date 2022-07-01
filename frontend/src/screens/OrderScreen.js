@@ -13,7 +13,6 @@ import { Store } from '../Store';
 import { getError } from '../utils';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
 
 function reducer(state, action) {
   switch (action.type) {
@@ -32,11 +31,11 @@ function reducer(state, action) {
 export default function OrderScreen() {
   const { state } = useContext(Store);
   const { userInfo } = state;
-  const [lgShow, setLgShow] = useState(true);
 
   const params = useParams();
   const { id: orderId } = params;
   const navigate = useNavigate();
+  const [lgShow, setLgShow] = useState(true);
 
   const [{ loading, error, order }, dispatch] = useReducer(reducer, {
     loading: true,
@@ -66,7 +65,6 @@ export default function OrderScreen() {
   }, [order, userInfo, orderId, navigate]);
 
   //http://localhost:3000/order/629437cac26fa557a8c7de84
-
   return loading ? (
     <LoadingBox></LoadingBox>
   ) : error ? (
@@ -129,9 +127,8 @@ export default function OrderScreen() {
           <div className="delgerengui">
             <p>
               Төлбөр төлөгдсөний дараа таны захиалга идэвхжихийг анхаарна уу!
-              Төлбөрийг дээрх дансанд шилжүүлэх ба захиалгын R727594090 дугаарыг
-              гүйлгээний утга дээр бичнэ үү. Мөн та өөрийн смарт банкны
-              програмыг ашиглан QR кодоор төлбөрөө төлөх боломжтой
+              Төлбөрийг дээрх дансанд шилжүүлэх ба захиалгын {order._id}{' '}
+              дугаарыг гүйлгээний утга дээр бичнэ үү.
             </p>
           </div>
         </Modal.Body>
@@ -153,7 +150,7 @@ export default function OrderScreen() {
               </Card.Text>
               {order.isDelivered ? (
                 <MessageBox variant="success">
-                  Delivered at {order.deliveredAt}
+                  Захиалга хүргэгдсэн {order.deliveredAt}
                 </MessageBox>
               ) : (
                 <MessageBox variant="danger">Хүргэгдээгүй</MessageBox>
@@ -166,9 +163,10 @@ export default function OrderScreen() {
               <Card.Text>
                 <strong>Сонголт:</strong> {order.paymentMethod}
               </Card.Text>
+
               {order.isPaid ? (
                 <MessageBox variant="success">
-                  Paid at {order.paidAt}
+                  Төлбөр төлөгдсөн {order.paidAt}
                 </MessageBox>
               ) : (
                 <MessageBox variant="danger">Баталгаажаагүй</MessageBox>
@@ -233,6 +231,18 @@ export default function OrderScreen() {
               </ListGroup>
             </Card.Body>
           </Card>
+          <div class="d-grid gap-2 mt-3">
+            <Button
+              class="btn btn-primary"
+              type="button"
+              variant="primary"
+              className="btn "
+              onClick={''}
+              disabled={''}
+            >
+              Төлбөр хүлээгдэж байна
+            </Button>
+          </div>
         </Col>
       </Row>
     </div>

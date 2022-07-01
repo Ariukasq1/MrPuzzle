@@ -12,6 +12,7 @@ import Axios from 'axios';
 import { toast } from 'react-toastify';
 import { getError } from '../utils';
 import LoadingBox from '../components/LoadingBox';
+import { TYPES } from '../constants';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -40,9 +41,15 @@ export default function PlaceOrderScreen() {
   cart.itemsPrice = round2(
     cart.cartItems.reduce((a, c) => a + c.quantity * c.price, 0)
   );
-  cart.shippingPrice = cart.itemsPrice > 100 ? round2(0) : round2(10);
 
-  cart.totalPrice = cart.itemsPrice + cart.shippingPrice;
+  let deliver;
+
+  TYPES.forEach((type) => {
+    if (type.value === cart.shippingAddress.city) {
+      deliver = type.deliver;
+    }
+  });
+  cart.totalPrice = cart.itemsPrice + deliver;
 
   const placeOrderHandler = async () => {
     try {
@@ -55,7 +62,7 @@ export default function PlaceOrderScreen() {
           shippingAddress: cart.shippingAddress,
           paymentMethod: cart.paymentMethod,
           itemsPrice: cart.itemsPrice,
-          shippingPrice: cart.shippingPrice,
+          shippingPrice: deliver,
           totalPrice: cart.totalPrice,
         },
         {
@@ -153,7 +160,7 @@ export default function PlaceOrderScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>Хүргэлт</Col>
-                    <Col>{cart.shippingPrice.toLocaleString()}₮</Col>
+                    <Col>{deliver.toLocaleString()}₮</Col>
                   </Row>
                 </ListGroup.Item>
 

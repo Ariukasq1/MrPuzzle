@@ -202,9 +202,10 @@ main {
   line-height: 1.2;
 }
 .delgerengui {
-  text-align: justify;
   margin-top: 0;
   margin-bottom: 1rem;
   padding-left: 50px;
   padding-right: 50px;
+  font-size: 14px;
+  text-align: justify;
 }

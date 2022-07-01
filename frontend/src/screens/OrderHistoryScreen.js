@@ -6,7 +6,7 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { Store } from '../Store';
 import { getError } from '../utils';
-import Button from 'react-bootstrap/esm/Button';
+import Button from 'react-bootstrap/Button';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -52,10 +52,10 @@ export default function OrderHistoryScreen() {
   return (
     <div>
       <Helmet>
-        <title>Захиалгын түүх</title>
+        <title>Order History</title>
       </Helmet>
 
-      <h1>Захиалгын түүх</h1>
+      <h1>Order History</h1>
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
@@ -92,7 +92,7 @@ export default function OrderHistoryScreen() {
                       navigate(`/order/${order._id}`);
                     }}
                   >
-                    Дэлгэрэнгүй
+                    Details
                   </Button>
                 </td>
               </tr>
