@@ -1,10 +1,8 @@
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
 import Navbar from 'react-bootstrap/Navbar';
-import Badge from 'react-bootstrap/Badge';
 import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Container from 'react-bootstrap/Container';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useContext, useEffect, useState } from 'react';
@@ -15,13 +13,9 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ShippingAddressScreen from './screens/ShippingAddressScreen';
 import SignupScreen from './screens/SignupScreen';
-import SearchBox from './components/SearchBox';
 import OrderHistoryScreen from './screens/OrderHistoryScreen';
 import ProfileScreen from './screens/ProfileScreen';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Footer from './components/Footer';
-import Button from 'react-bootstrap/Button';
 import { getError } from './utils';
 import axios from 'axios';
 import PaymentMethodScreen from './screens/PaymentMethodScreen';
@@ -37,17 +31,12 @@ import ProductEditScreen from './screens/ProductEditScreen';
 import OrderListScreen from './screens/OrderListScreen';
 import UserEditScreen from './screens/UserEditScreen';
 import UserListScreen from './screens/UserListScreen';
+import HeaderMenu from "./components/HeaderMenu";
 
 function App() {
-  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { state} = useContext(Store);
   const { cart, userInfo } = state;
-  const signoutHandler = () => {
-    ctxDispatch({ type: 'USER_SIGNOUT' });
-    localStorage.removeItem('userInfo');
-    localStorage.removeItem('shippingAddress');
-    localStorage.removeItem('paymentMethod');
-    window.location.href = '/signin';
-  };
+ 
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const [categories, setCategories] = useState([]);
 
@@ -76,140 +65,7 @@ function App() {
         <ToastContainer position="bottom-center" limit={1} />
         <header className="nvbar">
           <Navbar bg="white" variant="faded" expand="lg" className="hemjee">
-            <div
-              className="d-flex align-items-center bd-highlight mb-3 example-parent hemjee1"
-              style={{ height: '200px' }}
-            >
-              <div className="item1">
-                <div className="p-2 bd-highlight col-example  ">
-                  <Button
-                    className="sidebar"
-                    onClick={() => setSidebarIsOpen(!sidebarIsOpen)}
-                  >
-                    <i className="fas fa-bars sidebar"></i>
-                  </Button>
-                </div>
-
-                <div className="p-2 bd-highlight col-example">
-                  {' '}
-                  <div className="nav-menu">
-                    <Link to="/">
-                      <a class="navbar-brand" href="/">
-                        <img
-                          src="/images/mr.png"
-                          width="150"
-                          height="150"
-                          class="d-inline-block align-top"
-                          alt=""
-                        />
-                      </a>
-                    </Link>
-                  </div>
-                </div>
-                <div className="p-2 bd-highlight col-example">
-                  {' '}
-                  <h5>MR Puzzle Shop</h5>
-                </div>
-              </div>
-              <div className="item2">
-                <div className="p-2 bd-highlight col-example justify-content-center">
-                  <SearchBox />
-                </div>
-              </div>
-              <div className="item3">
-                <div className="p-2 bd-highlight col-example">
-                  {' '}
-                  <Link to="/cart" className="nav-link">
-                    <img
-                      src="/images/icons8-shopping-cart-100.png"
-                      alt="cart"
-                      className="shopping-cart"
-                    />
-                    Сагс
-                    {cart.cartItems.length > 0 && (
-                      <Badge pill bg="danger">
-                        {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
-                      </Badge>
-                    )}
-                  </Link>
-                </div>
-                <div className="p-2 bd-highlight col-example">
-                  <img
-                    src="/images/icons8-customer-100.png"
-                    alt="user"
-                    className="shopping-cart"
-                  />
-                </div>
-                <div className="p-2 bd-highlight col-example">
-                  <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                  <Navbar.Collapse id="basic-navbar-nav">
-                    <Row className="w-100 ">
-                      <Col span={4}>
-                        {' '}
-                        <Nav className="bairshil">
-                          <div>
-                            {userInfo ? (
-                              <NavDropdown
-                                title={userInfo.name}
-                                id="basic-nav-dropdown"
-                              >
-                                <LinkContainer to="/profile">
-                                  <NavDropdown.Item>
-                                    Хэрэглэгчийн тохиргоо
-                                  </NavDropdown.Item>
-                                </LinkContainer>
-                                <LinkContainer to="/orderhistory">
-                                  <NavDropdown.Item>
-                                    Захиалгын түүх
-                                  </NavDropdown.Item>
-                                </LinkContainer>
-                                <NavDropdown.Divider />
-                                <Link
-                                  className="dropdown-item"
-                                  to="#signout"
-                                  onClick={signoutHandler}
-                                >
-                                  Гарах
-                                </Link>
-                              </NavDropdown>
-                            ) : (
-                              <Link className="nav-link" to="/signin">
-                                Нэвтрэх
-                              </Link>
-                            )}
-                            {userInfo && userInfo.isAdmin && (
-                              <NavDropdown
-                                title="Админ"
-                                id="admin-nav-dropdown"
-                              >
-                                <LinkContainer to="/admin/dashboard">
-                                  <NavDropdown.Item>
-                                    Хянах самбар
-                                  </NavDropdown.Item>
-                                </LinkContainer>
-                                <LinkContainer to="/admin/products">
-                                  <NavDropdown.Item>Бараанууд</NavDropdown.Item>
-                                </LinkContainer>
-                                <LinkContainer to="/admin/orders">
-                                  <NavDropdown.Item>
-                                    Захиалгууд
-                                  </NavDropdown.Item>
-                                </LinkContainer>
-                                <LinkContainer to="/admin/users">
-                                  <NavDropdown.Item>
-                                    Хэрэглэгчид
-                                  </NavDropdown.Item>
-                                </LinkContainer>
-                              </NavDropdown>
-                            )}
-                          </div>
-                        </Nav>
-                      </Col>
-                    </Row>
-                  </Navbar.Collapse>
-                </div>
-              </div>
-            </div>
+            <HeaderMenu sidebarIsOpen={sidebarIsOpen} setSidebarIsOpen={setSidebarIsOpen} cart={cart} userInfo={userInfo} />
           </Navbar>
         </header>
         <div

@@ -28,17 +28,22 @@ function Product(props) {
   };
 
   return (
-    <Card>
+    <Card className='height-100'>
       <Link to={`/product/${product.slug}`}>
         <img src={product.image} className="card-img-top" alt={product.name} />
       </Link>
-      <Card.Body className="card-body">
-        <Link to={`/product/${product.slug}`} className="card-body">
-          <Card.Title>{product.name}</Card.Title>
+      <Card.Body className="card-body flex flex-column flex-between">
+        <Link to={`/product/${product.slug}`} className="card-body-mine">
+          <Card.Title>
+          <div className='typo-medium typo-weight-600 no-wrap'>
+
+          {product.name}
+          </div>
+          </Card.Title>
         </Link>
 
         <Card.Text>
-          <div className="textColor">{product.price.toLocaleString()}₮</div>
+          <div className="textColor typo-medium">{product.price.toLocaleString()}₮</div>
         </Card.Text>
 
         {product.countInStock === 0 ? (
@@ -46,7 +51,7 @@ function Product(props) {
             Дууссан
           </Button>
         ) : (
-          <Button onClick={() => addToCartHandler(product)}>
+          <Button onClick={() => addToCartHandler(product)} className="typo-small">
             Сагс руу нэмэх
           </Button>
         )}

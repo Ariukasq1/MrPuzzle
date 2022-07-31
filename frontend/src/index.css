@@ -119,7 +119,7 @@ main {
 .uldegdel {
   color: firebrick;
 }
-.card-body {
+.card-body-mine {
   color: #000000;
   text-decoration: none;
   font-family: Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -159,6 +159,47 @@ main {
   width: 100%;
   justify-content: space-around;
 }
+
+.flex{
+  display: flex;
+}
+
+.flex-between{
+  justify-content: space-between;
+}
+
+.flex-around{
+  justify-content: space-around;
+}
+
+.flex-column{
+  flex-direction: column;
+}
+.flex-center{
+  justify-content: center;
+  align-items: center;
+}
+
+
+.height-100{
+  height: 100%;
+}
+
+.width-100{
+  width: 100%;
+}
+
+.width-50{
+  width:50%;
+}
+
+.margin-auto{
+  margin:auto;
+}
+.img-cover{
+  object-fit: cover;
+}
+
 .item1 {
   display: flex;
   align-items: center;
@@ -208,4 +249,41 @@ main {
   padding-right: 50px;
   font-size: 14px;
   text-align: justify;
+}
+
+.pos-relative{
+  position:relative;
+}
+.badge{
+  position: absolute;
+  top:10%;
+  right:0;
+}
+
+.typo-small {
+  font-size: 12px;
+}
+.typo-medium{
+  font-size: 16px;
+}
+.typo-large{
+  font-size: 20px;
+}
+
+.typo-weight-400{
+font-weight: 400;
+}
+
+.typo-weight-600{
+font-weight: 600;
+}
+
+.typo-weight-800{
+font-weight: 800;
+}
+
+.no-wrap{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

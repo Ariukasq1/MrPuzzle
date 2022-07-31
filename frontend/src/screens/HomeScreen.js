@@ -53,16 +53,16 @@ function HomeScreen() {
       </Helmet>
       <Slider />
 
-      <Container className="p-5">
+      <Container className="pt-5">
         <div className="products">
           {loading ? (
             <LoadingBox />
           ) : error ? (
             <MessageBox variant="danger">{error}</MessageBox>
           ) : (
-            <Row>
+            <Row className='width-100 '>
               {products.map((product) => (
-                <Col key={product.slug} sm={6} md={4} lg={3} className="mb-3">
+                <Col key={product.slug} xs={6} sm={6} md={4} lg={3} className="mb-3">
                   <Product product={product}></Product>
                 </Col>
               ))}

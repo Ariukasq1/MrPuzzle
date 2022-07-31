@@ -50,6 +50,7 @@ export default function PlaceOrderScreen() {
     }
   });
   cart.totalPrice = cart.itemsPrice + deliver;
+  console.log("DELIVER:", deliver);
 
   const placeOrderHandler = async () => {
     try {
@@ -137,7 +138,7 @@ export default function PlaceOrderScreen() {
                       <Col md={3}>
                         <span>{item.quantity}</span>
                       </Col>
-                      <Col md={3}>{item.price.toLocaleString()}₮</Col>
+                      <Col md={3}>{item && item.price && item.price.toLocaleString()}₮</Col>
                     </Row>
                   </ListGroup.Item>
                 ))}
@@ -154,13 +155,13 @@ export default function PlaceOrderScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>Нийт барааны үнэ</Col>
-                    <Col>{cart.itemsPrice.toLocaleString()}₮</Col>
+                    <Col>{cart && cart.itemsPrice &&cart.itemsPrice.toLocaleString()}₮</Col>
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Row>
                     <Col>Хүргэлт</Col>
-                    <Col>{deliver.toLocaleString()}₮</Col>
+                    <Col>5000₮</Col>
                   </Row>
                 </ListGroup.Item>
 
