@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { getError } from '../utils';
@@ -23,7 +23,7 @@ const reducer = (state, action) => {
         page: action.payload.page,
         pages: action.payload.pages,
         countProducts: action.payload.countProducts,
-        loading: false,
+        loading: false
       };
     case 'FETCH_FAIL':
       return { ...state, loading: false, error: action.payload };
@@ -34,7 +34,6 @@ const reducer = (state, action) => {
 };
 
 export default function SearchScreen() {
-  const navigate = useNavigate();
   const { search } = useLocation();
   const sp = new URLSearchParams(search); // /search?category=Cube
   const category = sp.get('category') || 'all';
@@ -45,7 +44,7 @@ export default function SearchScreen() {
   const [{ loading, error, products, pages, countProducts }, dispatch] =
     useReducer(reducer, {
       loading: true,
-      error: '',
+      error: ''
     });
 
   useEffect(() => {
@@ -58,7 +57,7 @@ export default function SearchScreen() {
       } catch (err) {
         dispatch({
           type: 'FETCH_FAIL',
-          payload: getError(error),
+          payload: getError(error)
         });
       }
     };
@@ -78,7 +77,7 @@ export default function SearchScreen() {
     fetchCategories();
   }, [dispatch]);
 
-  const getFilterUrl = (filter) => {
+  const getFilterUrl = filter => {
     const filterPage = filter.page || page;
     const filterCategory = filter.category || category;
     const filterQuery = filter.query || query;
@@ -103,7 +102,7 @@ export default function SearchScreen() {
                   Бүх бараа харуулах
                 </Link>
               </li>
-              {categories.map((c) => (
+              {categories.map(c => (
                 <li key={c}>
                   <Link
                     className={c === category ? 'text-bold' : ''}
@@ -150,7 +149,7 @@ export default function SearchScreen() {
               )}
 
               <Row>
-                {products.map((product) => (
+                {products.map(product => (
                   <Col sm={6} lg={4} className="mb-3" key={product._id}>
                     <Product product={product}></Product>
                   </Col>
@@ -158,7 +157,7 @@ export default function SearchScreen() {
               </Row>
 
               <div>
-                {[...Array(pages).keys()].map((x) => (
+                {[...Array(pages).keys()].map(x => (
                   <LinkContainer
                     key={x + 1}
                     className="mx-1"

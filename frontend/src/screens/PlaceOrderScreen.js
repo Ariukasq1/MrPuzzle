@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useReducer, useState } from 'react';
+import React, { useContext, useEffect, useReducer } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
@@ -31,26 +31,26 @@ export default function PlaceOrderScreen() {
   const navigate = useNavigate();
 
   const [{ loading }, dispatch] = useReducer(reducer, {
-    loading: false,
+    loading: false
   });
 
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
 
-  const round2 = (num) => Math.round(num * 100 + Number.EPSILON) / 100; // 123.2345 => 123.23
+  const round2 = num => Math.round(num * 100 + Number.EPSILON) / 100; // 123.2345 => 123.23
   cart.itemsPrice = round2(
     cart.cartItems.reduce((a, c) => a + c.quantity * c.price, 0)
   );
 
   let deliver;
 
-  TYPES.forEach((type) => {
+  TYPES.forEach(type => {
     if (type.value === cart.shippingAddress.city) {
       deliver = type.deliver;
     }
   });
   cart.totalPrice = cart.itemsPrice + deliver;
-  console.log("DELIVER:", deliver);
+  console.log('DELIVER:', deliver);
 
   const placeOrderHandler = async () => {
     try {
@@ -64,12 +64,12 @@ export default function PlaceOrderScreen() {
           paymentMethod: cart.paymentMethod,
           itemsPrice: cart.itemsPrice,
           shippingPrice: deliver,
-          totalPrice: cart.totalPrice,
+          totalPrice: cart.totalPrice
         },
         {
           headers: {
-            authorization: `Bearer ${userInfo.token}`,
-          },
+            authorization: `Bearer ${userInfo.token}`
+          }
         }
       );
       ctxDispatch({ type: 'CART_CLEAR' });
@@ -124,7 +124,7 @@ export default function PlaceOrderScreen() {
             <Card.Body>
               <Card.Title>Бараанууд</Card.Title>
               <ListGroup variant="flush">
-                {cart.cartItems.map((item) => (
+                {cart.cartItems.map(item => (
                   <ListGroup.Item key={item._id}>
                     <Row className="align-items-center">
                       <Col md={6}>
@@ -138,7 +138,9 @@ export default function PlaceOrderScreen() {
                       <Col md={3}>
                         <span>{item.quantity}</span>
                       </Col>
-                      <Col md={3}>{item && item.price && item.price.toLocaleString()}₮</Col>
+                      <Col md={3}>
+                        {item && item.price && item.price.toLocaleString()}₮
+                      </Col>
                     </Row>
                   </ListGroup.Item>
                 ))}
@@ -155,7 +157,12 @@ export default function PlaceOrderScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>Нийт барааны үнэ</Col>
-                    <Col>{cart && cart.itemsPrice &&cart.itemsPrice.toLocaleString()}₮</Col>
+                    <Col>
+                      {cart &&
+                        cart.itemsPrice &&
+                        cart.itemsPrice.toLocaleString()}
+                      ₮
+                    </Col>
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
