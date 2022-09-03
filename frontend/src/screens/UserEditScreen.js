@@ -33,7 +33,7 @@ const reducer = (state, action) => {
 export default function UserEditScreen() {
   const [{ loading, error, loadingUpdate }, dispatch] = useReducer(reducer, {
     loading: true,
-    error: '',
+    error: ''
   });
 
   const { state } = useContext(Store);
@@ -51,9 +51,12 @@ export default function UserEditScreen() {
     const fetchData = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await axios.get(`/api/users/${userId}`, {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
-        });
+        const { data } = await axios.get(
+          `https://polar-lake-47657.herokuapp.com/api/users/${userId}`,
+          {
+            headers: { Authorization: `Bearer ${userInfo.token}` }
+          }
+        );
         setName(data.name);
         setEmail(data.email);
         setIsAdmin(data.isAdmin);
@@ -61,26 +64,26 @@ export default function UserEditScreen() {
       } catch (err) {
         dispatch({
           type: 'FETCH_FAIL',
-          payload: getError(err),
+          payload: getError(err)
         });
       }
     };
     fetchData();
   }, [userId, userInfo]);
 
-  const submitHandler = async (e) => {
+  const submitHandler = async e => {
     e.preventDefault();
     try {
       dispatch({ type: 'UPDATE_REQUEST' });
       await axios.put(
-        `/api/users/${userId}`,
+        `https://polar-lake-47657.herokuapp.com/api/users/${userId}`,
         { _id: userId, name, email, isAdmin },
         {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
+          headers: { Authorization: `Bearer ${userInfo.token}` }
         }
       );
       dispatch({
-        type: 'UPDATE_SUCCESS',
+        type: 'UPDATE_SUCCESS'
       });
       toast.success('Хэрэглэгч амжилттай шинэчлэгдлээ');
       navigate('/admin/users');
@@ -106,7 +109,7 @@ export default function UserEditScreen() {
             <Form.Label>Нэр</Form.Label>
             <Form.Control
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={e => setName(e.target.value)}
               required
             />
           </Form.Group>
@@ -115,7 +118,7 @@ export default function UserEditScreen() {
             <Form.Control
               value={email}
               type="email"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={e => setEmail(e.target.value)}
               required
             />
           </Form.Group>
@@ -126,7 +129,7 @@ export default function UserEditScreen() {
             id="isAdmin"
             label="Админ эсэх"
             checked={isAdmin}
-            onChange={(e) => setIsAdmin(e.target.checked)}
+            onChange={e => setIsAdmin(e.target.checked)}
           />
 
           <div className="mb-3">

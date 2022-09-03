@@ -16,7 +16,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         users: action.payload,
-        loading: false,
+        loading: false
       };
     case 'FETCH_FAIL':
       return { ...state, loading: false, error: action.payload };
@@ -26,7 +26,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         loadingDelete: false,
-        successDelete: true,
+        successDelete: true
       };
     case 'DELETE_FAIL':
       return { ...state, loadingDelete: false };
@@ -41,7 +41,7 @@ export default function UserListScreen() {
   const [{ loading, error, users, loadingDelete, successDelete }, dispatch] =
     useReducer(reducer, {
       loading: true,
-      error: '',
+      error: ''
     });
   const { state } = useContext(Store);
   const { userInfo } = state;
@@ -49,14 +49,17 @@ export default function UserListScreen() {
     const fetchData = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await axios.get(`/api/users`, {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
-        });
+        const { data } = await axios.get(
+          `https://polar-lake-47657.herokuapp.com/api/users`,
+          {
+            headers: { Authorization: `Bearer ${userInfo.token}` }
+          }
+        );
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (err) {
         dispatch({
           type: 'FETCH_FAIL',
-          payload: getError(err),
+          payload: getError(err)
         });
       }
     };
@@ -67,19 +70,22 @@ export default function UserListScreen() {
     }
   }, [userInfo, successDelete]);
 
-  const deleteHandler = async (user) => {
+  const deleteHandler = async user => {
     if (window.confirm('Устгахдаа итгэлтэй байна уу?')) {
       try {
         dispatch({ type: 'DELETE_REQUEST' });
-        await axios.delete(`/api/users/${user._id}`, {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
-        });
+        await axios.delete(
+          `https://polar-lake-47657.herokuapp.com/api/users/${user._id}`,
+          {
+            headers: { Authorization: `Bearer ${userInfo.token}` }
+          }
+        );
         toast.success('Хэрэглэгч амжилттай устгагдлаа');
         dispatch({ type: 'DELETE_SUCCESS' });
       } catch (error) {
         toast.error(getError(error));
         dispatch({
-          type: 'DELETE_FAIL',
+          type: 'DELETE_FAIL'
         });
       }
     }
@@ -107,7 +113,7 @@ export default function UserListScreen() {
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
+            {users.map(user => (
               <tr key={user._id}>
                 <td>{user._id}</td>
                 <td>{user.name}</td>

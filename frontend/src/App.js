@@ -31,19 +31,21 @@ import ProductEditScreen from './screens/ProductEditScreen';
 import OrderListScreen from './screens/OrderListScreen';
 import UserEditScreen from './screens/UserEditScreen';
 import UserListScreen from './screens/UserListScreen';
-import HeaderMenu from "./components/HeaderMenu";
+import HeaderMenu from './components/HeaderMenu';
 
 function App() {
-  const { state} = useContext(Store);
+  const { state } = useContext(Store);
   const { cart, userInfo } = state;
- 
+
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const { data } = await axios.get('/api/products/categories');
+        const { data } = await axios.get(
+          'https://polar-lake-47657.herokuapp.com/api/products/categories'
+        );
         setCategories(data);
       } catch (err) {
         toast.error(getError(err));
@@ -65,7 +67,12 @@ function App() {
         <ToastContainer position="bottom-center" limit={1} />
         <header className="nvbar">
           <Navbar bg="white" variant="faded" expand="lg" className="hemjee">
-            <HeaderMenu sidebarIsOpen={sidebarIsOpen} setSidebarIsOpen={setSidebarIsOpen} cart={cart} userInfo={userInfo} />
+            <HeaderMenu
+              sidebarIsOpen={sidebarIsOpen}
+              setSidebarIsOpen={setSidebarIsOpen}
+              cart={cart}
+              userInfo={userInfo}
+            />
           </Navbar>
         </header>
         <div
@@ -79,7 +86,7 @@ function App() {
             <Nav.Item>
               <strong>Төрөл</strong>
             </Nav.Item>
-            {categories.map((category) => (
+            {categories.map(category => (
               <Nav.Item key={category}>
                 <LinkContainer
                   to={`search?category=${category}`}

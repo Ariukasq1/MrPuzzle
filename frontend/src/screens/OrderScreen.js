@@ -40,16 +40,19 @@ export default function OrderScreen() {
   const [{ loading, error, order }, dispatch] = useReducer(reducer, {
     loading: true,
     order: {},
-    error: '',
+    error: ''
   });
 
   useEffect(() => {
     const fetchOrder = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await axios.get(`/api/orders/${orderId}`, {
-          headers: { authorization: `Bearer ${userInfo.token}` },
-        });
+        const { data } = await axios.get(
+          `https://polar-lake-47657.herokuapp.com/api/orders/${orderId}`,
+          {
+            headers: { authorization: `Bearer ${userInfo.token}` }
+          }
+        );
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (err) {
         dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
@@ -178,7 +181,7 @@ export default function OrderScreen() {
             <Card.Body>
               <Card.Title>Бараанууд</Card.Title>
               <ListGroup variant="flush">
-                {order.orderItems.map((item) => (
+                {order.orderItems.map(item => (
                   <ListGroup.Item key={item._id}>
                     <Row className="align-items-center">
                       <Col md={6}>

@@ -38,7 +38,7 @@ export default function ProductEditScreen() {
   const { userInfo } = state;
   const [{ loading, error, loadingUpdate }, dispatch] = useReducer(reducer, {
     loading: true,
-    error: '',
+    error: ''
   });
 
   const [name, setName] = useState('');
@@ -54,7 +54,9 @@ export default function ProductEditScreen() {
     const fetchData = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await axios.get(`/api/products/${productId}`);
+        const { data } = await axios.get(
+          `https://polar-lake-47657.herokuapp.com/api/products/${productId}`
+        );
         setName(data.name);
         setSlug(data.slug);
         setPrice(data.price);
@@ -67,18 +69,18 @@ export default function ProductEditScreen() {
       } catch (err) {
         dispatch({
           type: 'FETCH_FAIL',
-          payload: getError(err),
+          payload: getError(err)
         });
       }
     };
     fetchData();
   }, [productId]);
-  const submitHandler = async (e) => {
+  const submitHandler = async e => {
     e.preventDefault();
     try {
       dispatch({ type: 'UPDATE_REQUEST' });
       await axios.put(
-        `/api/products/${productId}`,
+        `https://polar-lake-47657.herokuapp.com/api/products/${productId}`,
         {
           _id: productId,
           name,
@@ -88,14 +90,14 @@ export default function ProductEditScreen() {
           category,
           brand,
           countInStock,
-          description,
+          description
         },
         {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
+          headers: { Authorization: `Bearer ${userInfo.token}` }
         }
       );
       dispatch({
-        type: 'UPDATE_SUCCESS',
+        type: 'UPDATE_SUCCESS'
       });
       toast.success('Бараа амжилттай шинэчлэгдлээ');
       navigate('/admin/products');
@@ -122,7 +124,7 @@ export default function ProductEditScreen() {
             <Form.Label>Нэр</Form.Label>
             <Form.Control
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={e => setName(e.target.value)}
               required
             />
           </Form.Group>
@@ -130,7 +132,7 @@ export default function ProductEditScreen() {
             <Form.Label>Url нэр</Form.Label>
             <Form.Control
               value={slug}
-              onChange={(e) => setSlug(e.target.value)}
+              onChange={e => setSlug(e.target.value)}
               required
             />
           </Form.Group>
@@ -138,7 +140,7 @@ export default function ProductEditScreen() {
             <Form.Label>Үнэ</Form.Label>
             <Form.Control
               value={price}
-              onChange={(e) => setPrice(e.target.value)}
+              onChange={e => setPrice(e.target.value)}
               required
             />
           </Form.Group>
@@ -146,7 +148,7 @@ export default function ProductEditScreen() {
             <Form.Label>Зурагны өргөтгөл</Form.Label>
             <Form.Control
               value={image}
-              onChange={(e) => setImage(e.target.value)}
+              onChange={e => setImage(e.target.value)}
               required
             />
           </Form.Group>
@@ -154,7 +156,7 @@ export default function ProductEditScreen() {
             <Form.Label>Төрөл</Form.Label>
             <Form.Control
               value={category}
-              onChange={(e) => setCategory(e.target.value)}
+              onChange={e => setCategory(e.target.value)}
               required
             />
           </Form.Group>
@@ -162,7 +164,7 @@ export default function ProductEditScreen() {
             <Form.Label>Брэнд</Form.Label>
             <Form.Control
               value={brand}
-              onChange={(e) => setBrand(e.target.value)}
+              onChange={e => setBrand(e.target.value)}
               required
             />
           </Form.Group>
@@ -170,7 +172,7 @@ export default function ProductEditScreen() {
             <Form.Label>Боломжит нөөц</Form.Label>
             <Form.Control
               value={countInStock}
-              onChange={(e) => setCountInStock(e.target.value)}
+              onChange={e => setCountInStock(e.target.value)}
               required
             />
           </Form.Group>
@@ -178,7 +180,7 @@ export default function ProductEditScreen() {
             <Form.Label>Тайлбар</Form.Label>
             <Form.Control
               value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              onChange={e => setDescription(e.target.value)}
               required
             />
           </Form.Group>

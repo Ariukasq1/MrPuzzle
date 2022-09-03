@@ -28,14 +28,14 @@ export default function OrderHistoryScreen() {
 
   const [{ loading, error, orders }, dispatch] = useReducer(reducer, {
     loading: true,
-    error: '',
+    error: ''
   });
   useEffect(() => {
     const fetchData = async () => {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
         const { data } = await axios.get(
-          `/api/orders/mine`,
+          `https://polar-lake-47657.herokuapp.com/api/orders/mine`,
 
           { headers: { Authorization: `Bearer ${userInfo.token}` } }
         );
@@ -43,7 +43,7 @@ export default function OrderHistoryScreen() {
       } catch (error) {
         dispatch({
           type: 'FETCH_FAIL',
-          payload: getError(error),
+          payload: getError(error)
         });
       }
     };
@@ -73,7 +73,7 @@ export default function OrderHistoryScreen() {
             </tr>
           </thead>
           <tbody>
-            {orders.map((order) => (
+            {orders.map(order => (
               <tr key={order._id}>
                 <td>{order._id}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>

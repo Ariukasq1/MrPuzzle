@@ -51,7 +51,7 @@ export default function SearchScreen() {
     const fetchData = async () => {
       try {
         const { data } = await axios.get(
-          `/api/products/search?page=${page}&query=${query}&category=${category}&order=${order}`
+          `https://polar-lake-47657.herokuapp.com/api/products/search?page=${page}&query=${query}&category=${category}&order=${order}`
         );
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (err) {
@@ -68,7 +68,9 @@ export default function SearchScreen() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const { data } = await axios.get(`/api/products/categories`);
+        const { data } = await axios.get(
+          `https://polar-lake-47657.herokuapp.com/api/products/categories`
+        );
         setCategories(data);
       } catch (err) {
         toast.error(getError(err));
