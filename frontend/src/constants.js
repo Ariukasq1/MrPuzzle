@@ -1,5 +1,5 @@
 export const TYPES = [
-  { label: 'Улаанбаатар хот', value: 'ulaanbaatar' },
+  { label: 'Улаанбаатар хот', value: 'ulaanbaatar', deliver: 5000 },
   { label: 'Дархан-уул аймаг', value: 'darhan', deliver: 4000 + 5000 },
   { label: 'Архангай аймаг', value: 'arkhangai', deliver: 5000 + 5000 },
   { label: 'Баян-өлгий аймаг', value: 'bayanolgii', deliver: 16500 },

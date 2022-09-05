@@ -50,7 +50,6 @@ export default function PlaceOrderScreen() {
     }
   });
   cart.totalPrice = cart.itemsPrice + deliver;
-  console.log('DELIVER:', deliver);
 
   const placeOrderHandler = async () => {
     try {
@@ -168,7 +167,7 @@ export default function PlaceOrderScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>Хүргэлт</Col>
-                    <Col>5000₮</Col>
+                    <Col>{deliver.toLocaleString()}₮</Col>
                   </Row>
                 </ListGroup.Item>
 
