@@ -10,7 +10,7 @@ export default function PaymentMethodScreen() {
   const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
-    cart: { shippingAddress, paymentMethod },
+    cart: { shippingAddress, paymentMethod }
   } = state;
 
   const [paymentMethodName, setPaymentMethod] = useState(
@@ -22,7 +22,7 @@ export default function PaymentMethodScreen() {
       navigate('/shipping');
     }
   }, [shippingAddress, navigate]);
-  const submitHandler = (e) => {
+  const submitHandler = e => {
     e.preventDefault();
     ctxDispatch({ type: 'SAVE_PAYMENT_METHOD', payload: paymentMethodName });
     localStorage.setItem('paymentMethod', paymentMethodName);
@@ -44,8 +44,8 @@ export default function PaymentMethodScreen() {
               label="QPay"
               value="QPay"
               checked={paymentMethodName === 'QPay'}
-              onChange={(e) => setPaymentMethod(e.target.value)}
-              disabled={false}
+              onChange={e => setPaymentMethod(e.target.value)}
+              disabled={true}
             />
           </div>
           <div className="mb-3">
@@ -55,7 +55,7 @@ export default function PaymentMethodScreen() {
               label="Mobile bank"
               value="Mobile bank"
               checked={paymentMethodName === 'Mobile bank'}
-              onChange={(e) => setPaymentMethod(e.target.value)}
+              onChange={e => setPaymentMethod(e.target.value)}
             />
           </div>
           <div className="mb-3">
