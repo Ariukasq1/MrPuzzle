@@ -28,7 +28,7 @@ const HeaderMenu = ({ sidebarIsOpen, setSidebarIsOpen, cart, userInfo }) => {
       // className="d-flex align-items-center bd-highlight mb-3 example-parent hemjee1"
       // style={{ height: '200px' }}
     >
-      <div className="flex flex-around width-100">
+      <div className="flex flex-around width-100 logoo head-navbar">
         <div className="flex flex-center">
           <div className="p-2 bd-highlight col-example">
             <div className="">
@@ -55,10 +55,10 @@ const HeaderMenu = ({ sidebarIsOpen, setSidebarIsOpen, cart, userInfo }) => {
           </div>
         </div>
         <div className="flex flex-center">
-          <div className=" bd-highlight col-example">
+          <div className=" bd-highlight col-example basket">
             <Link to="/cart" className="nav-link flex flex-center pos-relative">
               <img
-                src="/images/icons8-shopping-cart-100.png"
+                src="/images/baskett.png"
                 alt="cart"
                 className="shopping-cart"
               />
@@ -70,13 +70,9 @@ const HeaderMenu = ({ sidebarIsOpen, setSidebarIsOpen, cart, userInfo }) => {
             </Link>
           </div>
           <div className="p-2 bd-highlight col-example show-tablet">
-            <img
-              src="/images/icons8-customer-100.png"
-              alt="user"
-              className="shopping-cart"
-            />
+            <img src="/images/user.png" alt="user" className="shopping-cart" />
           </div>
-          <div className="p-2 bd-highlight col-example">
+          <div className="p-2 bd-highlight col-example logo">
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Row className="w-100 ">
@@ -134,6 +130,7 @@ const HeaderMenu = ({ sidebarIsOpen, setSidebarIsOpen, cart, userInfo }) => {
             </Navbar.Collapse>
           </div>
         </div>
+        <div className="flex flex-center"></div>
       </div>
 
       <div className="flex flex-center show-mobile width-100">

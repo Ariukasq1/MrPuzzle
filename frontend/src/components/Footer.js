@@ -51,10 +51,10 @@ export default function Footer() {
             <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
               <h6 className="text-uppercase fw-bold mb-4">Холбоо барих</h6>
               <p>
-                <i className="fas fa-phone me-3"></i> + 9999999
+                <i className="fas fa-phone me-3"></i> + 94233540
               </p>
               <p>
-                <i className="fas fa-phone me-3"></i> + 8888888
+                <i className="fas fa-phone me-3"></i> + 98243540
               </p>
               <p>
                 <i className="fas fa-envelope me-3"></i>

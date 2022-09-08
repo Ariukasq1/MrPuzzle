@@ -158,6 +158,7 @@ main {
 .hemjee1 {
   width: 100%;
   justify-content: space-around;
+
 }
 
 .flex{
@@ -286,4 +287,19 @@ font-weight: 800;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.basket{
+  margin-right: 25px;
+}
+
+.logoo{
+  margin-left: 180px;
+}
+
+.cartt{
+  margin-right: 50px;
+}
+.logoo{
+  margin-right: 180px;
 }

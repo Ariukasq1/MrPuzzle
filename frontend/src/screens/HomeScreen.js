@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import { useEffect, useReducer, useContext } from 'react';
 import axios from 'axios';
 import logger from 'use-reducer-logger';
 import Row from 'react-bootstrap/Row';
@@ -9,6 +9,9 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import Slider from '../components/Carousel';
 import Container from 'react-bootstrap/esm/Container';
+import HeaderMenu from '../components/HeaderMenu';
+import Navbar from 'react-bootstrap/Navbar';
+import { Store } from '../Store';
 // import data from '../data';
 
 const reducer = (state, action) => {
@@ -25,6 +28,8 @@ const reducer = (state, action) => {
 };
 
 function HomeScreen() {
+  const { state } = useContext(Store);
+  const { cart, userInfo } = state;
   const [{ loading, error, products }, dispatch] = useReducer(logger(reducer), {
     products: [],
     loading: true,
@@ -53,6 +58,7 @@ function HomeScreen() {
       <Helmet>
         <title>MR Puzzle Shop</title>
       </Helmet>
+
       <Slider />
 
       <Container className="pt-5">

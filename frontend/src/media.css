@@ -17,6 +17,10 @@
     height: 300px;
     object-fit: cover;
   }
+  .head-navbar{
+    display: flex;
+    margin-left: 0px;
+  }
 }
 
 @media only screen and (min-width: 576px) and (max-width:992px) {
