@@ -1,7 +1,7 @@
 export const TYPES = [
-  { label: 'Улаанбаатар хот', value: 'ulaanbaatar' },
-  { label: 'Дархан-уул аймаг', value: 'darhan', deliver: 4000 },
-  { label: 'Архангай аймаг', value: 'arkhangai', deliver: 5000 },
+  { label: 'Улаанбаатар хот', value: 'ulaanbaatar', deliver: 5000 },
+  { label: 'Дархан-уул аймаг', value: 'darhan', deliver: 4000 + 5000 },
+  { label: 'Архангай аймаг', value: 'arkhangai', deliver: 5000 + 5000 },
   { label: 'Баян-өлгий аймаг', value: 'bayanolgii', deliver: 16500 },
   { label: 'Баянхонгор аймаг', value: 'bayanhongor', deliver: 7000 },
   { label: 'Булган аймаг', value: 'bulgan', deliver: 4000 },
@@ -20,7 +20,7 @@ export const TYPES = [
   { label: 'Хөвсгөл аймаг', value: 'huwsgul', deliver: 8000 },
   { label: 'Хэнтий аймаг', value: 'hentii', deliver: 4000 },
   { label: 'Орхон аймаг', value: 'orhon', deliver: '' },
-  { label: 'Говьсүмбэр аймаг', value: 'govisumber', deliver: 4000 },
+  { label: 'Говьсүмбэр аймаг', value: 'govisumber', deliver: 4000 }
 ];
 
 const ulaanbaatar = [
@@ -32,7 +32,7 @@ const ulaanbaatar = [
   { label: 'Багахангай дүүрэг', value: 'baganhangai' },
   { label: 'Налайх дүүрэг', value: 'nalaih' },
   { label: 'Сонгинохайрхан дүүрэг', value: 'songinohairhan' },
-  { label: 'Чингэлтэй дүүрэг', value: 'chingeltei' },
+  { label: 'Чингэлтэй дүүрэг', value: 'chingeltei' }
 ];
 
 const arkhangai = [
@@ -55,7 +55,7 @@ const arkhangai = [
   { label: 'Цэцэрлэг сум', value: 'arkhangai' },
   { label: 'Чулуут сум', value: 'arkhangai' },
   { label: 'Эрдэнэбулган сум', value: 'arkhangai' },
-  { label: 'Эрдэнэмандал сум', value: 'arkhangai' },
+  { label: 'Эрдэнэмандал сум', value: 'arkhangai' }
 ];
 
 const bayanolgii = [
@@ -72,14 +72,14 @@ const bayanolgii = [
   { label: 'Толбо сум', value: 'bayanhon' },
   { label: 'Улаанхус сум', value: 'bayanhon' },
   { label: 'Цагааннуур сум', value: 'bayanhon' },
-  { label: 'Цэнгэл сум', value: 'bayanhon' },
+  { label: 'Цэнгэл сум', value: 'bayanhon' }
 ];
 
 const darhan = [
   { label: 'Дархан сум', value: 'darhan' },
   { label: 'Орхон сум', value: 'darhan' },
   { label: 'Хонгор сум', value: 'darhan' },
-  { label: 'Шарын гол сум', value: 'darhan' },
+  { label: 'Шарын гол сум', value: 'darhan' }
 ];
 
 const bayanhongor = [
@@ -102,7 +102,7 @@ const bayanhongor = [
   { label: 'Өлзийт сум', value: 'bayanhon' },
   { label: 'Хүрээмарал сум', value: 'bayanhon' },
   { label: 'Шинэжинст сум', value: 'bayanhon' },
-  { label: 'Эрдэнэцогт сум', value: 'bayanhon' },
+  { label: 'Эрдэнэцогт сум', value: 'bayanhon' }
 ];
 
 const bulgan = [
@@ -121,7 +121,7 @@ const bulgan = [
   { label: 'Тэшиг сум', value: 'bulgan' },
   { label: 'Хангал сум', value: 'bulgan' },
   { label: 'Хишиг - Өндөр сум', value: 'bulgan' },
-  { label: 'Хутаг - Өндөр сум', value: 'bulgan' },
+  { label: 'Хутаг - Өндөр сум', value: 'bulgan' }
 ];
 
 const govialtai = [
@@ -143,7 +143,7 @@ const govialtai = [
   { label: 'Чандмань сум', value: 'govialtai' },
   { label: 'Шарга сум', value: 'govialtai' },
   { label: 'Говьялтай сум', value: 'govialtai' },
-  { label: 'Эрдэнэ сум', value: 'govialtai' },
+  { label: 'Эрдэнэ сум', value: 'govialtai' }
 ];
 
 const dornogovi = [
@@ -159,7 +159,7 @@ const dornogovi = [
   { label: 'Улаанбадрах сум', value: 'dornogovi' },
   { label: 'Хатанбулаг сум', value: 'dornogovi' },
   { label: 'Хөвсгөл сум', value: 'dornogovi' },
-  { label: 'Эрдэнэ сум', value: 'dornogovi' },
+  { label: 'Эрдэнэ сум', value: 'dornogovi' }
 ];
 
 const dornod = [
@@ -176,7 +176,7 @@ const dornod = [
   { label: 'Хэрлэн сум', value: 'dornod' },
   { label: 'Цагаан - Овоо сум', value: 'dornod' },
   { label: 'Чойбалсан сум', value: 'dornod' },
-  { label: 'Чулуунхороот сум', value: 'dornod' },
+  { label: 'Чулуунхороот сум', value: 'dornod' }
 ];
 
 const dundgovi = [
@@ -195,7 +195,7 @@ const dundgovi = [
   { label: 'Сайхан - Овоо сум', value: 'dundgovi' },
   { label: 'Хулд сум', value: 'dundgovi' },
   { label: 'Цагаандэлгэр сум', value: 'dundgovi' },
-  { label: 'Эрдэнэдалай сум', value: 'dundgovi' },
+  { label: 'Эрдэнэдалай сум', value: 'dundgovi' }
 ];
 
 const zawhan = [
@@ -221,13 +221,13 @@ const zawhan = [
   { label: 'Цэцэн - Уул сум', value: 'zawhan' },
   { label: 'Шилүүстэй сум', value: 'zawhan' },
   { label: 'Эрдэнэхайрхан сум', value: 'zawhan' },
-  { label: 'Яруу сум', value: 'zawhan' },
+  { label: 'Яруу сум', value: 'zawhan' }
 ];
 
 const orhon = [
   { label: 'Эрдэнэт сум', value: 'orhon' },
   { label: 'Баян - Өндөр сум', value: 'orhon' },
-  { label: 'Жаргалант сум', value: 'orhon' },
+  { label: 'Жаргалант сум', value: 'orhon' }
 ];
 
 const oworhangai = [
@@ -249,7 +249,7 @@ const oworhangai = [
   { label: 'Уянга сум', value: 'oworhangai' },
   { label: 'Хайрхандулаан сум', value: 'oworhangai' },
   { label: 'Хархорин сум', value: 'oworhangai' },
-  { label: 'Хужирт сум', value: 'oworhangai' },
+  { label: 'Хужирт сум', value: 'oworhangai' }
 ];
 
 const omnogovi = [
@@ -267,7 +267,7 @@ const omnogovi = [
   { label: 'Ханхонгор сум', value: 'omnogovi' },
   { label: 'Хүрмэн сум', value: 'omnogovi' },
   { label: 'Цогт - Овоо сум', value: 'omnogovi' },
-  { label: 'Цогтцэций сум', value: 'omnogovi' },
+  { label: 'Цогтцэций сум', value: 'omnogovi' }
 ];
 
 const sukhbaatar = [
@@ -283,7 +283,7 @@ const sukhbaatar = [
   { label: 'Түмэнцогт сум', value: 'sukhbaatar' },
   { label: 'Уулбаян сум', value: 'sukhbaatar' },
   { label: 'Халзан сум', value: 'sukhbaatar' },
-  { label: 'Эрдэнэцагаан сум', value: 'sukhbaatar' },
+  { label: 'Эрдэнэцагаан сум', value: 'sukhbaatar' }
 ];
 
 const selenge = [
@@ -303,7 +303,7 @@ const selenge = [
   { label: 'Хушаат сум', value: 'sukhbaatar' },
   { label: 'Хүдэр сум', value: 'sukhbaatar' },
   { label: 'Цагааннуур сум', value: 'sukhbaatar' },
-  { label: 'Шаамар сум', value: 'sukhbaatar' },
+  { label: 'Шаамар сум', value: 'sukhbaatar' }
 ];
 
 const tow = [
@@ -333,7 +333,7 @@ const tow = [
   { label: 'Угтаалцайдам сум', value: 'sukhbaatar' },
   { label: 'Цээл сум', value: 'sukhbaatar' },
   { label: 'Эрдэнэ сум', value: 'sukhbaatar' },
-  { label: 'Эрдэнэсант сум', value: 'sukhbaatar' },
+  { label: 'Эрдэнэсант сум', value: 'sukhbaatar' }
 ];
 
 const uws = [
@@ -356,7 +356,7 @@ const uws = [
   { label: 'Тэс сум', value: 'sukhbaatar' },
   { label: 'Ховд сум', value: 'sukhbaatar' },
   { label: 'Хяргас сум', value: 'sukhbaatar' },
-  { label: 'Цагаанхайрхан сум', value: 'sukhbaatar' },
+  { label: 'Цагаанхайрхан сум', value: 'sukhbaatar' }
 ];
 
 const howd = [
@@ -377,7 +377,7 @@ const howd = [
   { label: 'Ховд сум', value: 'sukhbaatar' },
   { label: 'Цэцэг сум', value: 'sukhbaatar' },
   { label: 'Чандмань сум', value: 'sukhbaatar' },
-  { label: 'Эрдэнэбүрэн сум', value: 'sukhbaatar' },
+  { label: 'Эрдэнэбүрэн сум', value: 'sukhbaatar' }
 ];
 
 const huwsgul = [
@@ -405,7 +405,7 @@ const huwsgul = [
   { label: 'Цэцэрлэг сум', value: 'sukhbaatar' },
   { label: 'Чандмань - Өндөр сум', value: 'sukhbaatar' },
   { label: 'Шинэ - Идэр сум', value: 'sukhbaatar' },
-  { label: 'Эрдэнэбулган сум', value: 'sukhbaatar' },
+  { label: 'Эрдэнэбулган сум', value: 'sukhbaatar' }
 ];
 const hentii = [
   { label: 'Чингис сум', value: 'sukhbaatar' },
@@ -426,7 +426,7 @@ const hentii = [
   { label: 'Норовлин сум', value: 'sukhbaatar' },
   { label: 'Өмнөдэлгэр сум', value: 'sukhbaatar' },
   { label: 'Хэрлэн сум', value: 'sukhbaatar' },
-  { label: 'Цэнхэрмандал сум', value: 'sukhbaatar' },
+  { label: 'Цэнхэрмандал сум', value: 'sukhbaatar' }
 ];
 
 // Duureg sumuudiin horoo, bag
@@ -436,11 +436,11 @@ const baganuur = [
   { label: '2-р хороо', value: 'khoroo' },
   { label: '3-р хороо', value: 'khoroo' },
   { label: '4-р хороо', value: 'khoroo' },
-  { label: '5-р хороо', value: 'khoroo' },
+  { label: '5-р хороо', value: 'khoroo' }
 ];
 const baganhangai = [
   { label: '1-р хороо', value: 'khoroo' },
-  { label: '2-р хороо', value: 'khoroo' },
+  { label: '2-р хороо', value: 'khoroo' }
 ];
 const bayangol = [
   { label: '1-р хороо', value: 'khoroo', deliver: 5000 },
@@ -467,7 +467,7 @@ const bayangol = [
   { label: '22-р хороо', value: 'khoroo', deliver: 5000 },
   { label: '23-р хороо', value: 'khoroo', deliver: 5000 },
   { label: '24-р хороо', value: 'khoroo', deliver: 5000 },
-  { label: '25-р хороо', value: 'khoroo', deliver: 5000 },
+  { label: '25-р хороо', value: 'khoroo', deliver: 5000 }
 ];
 
 const bayanzurkh = [
@@ -498,7 +498,7 @@ const bayanzurkh = [
   { label: '25-р хороо', value: 'khoroo' },
   { label: '26-р хороо', value: 'khoroo' },
   { label: '27-р хороо', value: 'khoroo' },
-  { label: '28-р хороо', value: 'khoroo' },
+  { label: '28-р хороо', value: 'khoroo' }
 ];
 
 const nalaih = [
@@ -508,7 +508,7 @@ const nalaih = [
   { label: '4-р хороо', value: 'khoroo' },
   { label: '5-р хороо', value: 'khoroo' },
   { label: '6-р хороо', value: 'khoroo' },
-  { label: '7-р хороо', value: 'khoroo' },
+  { label: '7-р хороо', value: 'khoroo' }
 ];
 
 const songinohairhan = [
@@ -554,7 +554,7 @@ const songinohairhan = [
   { label: '40-р хороо', value: 'khoroo' },
   { label: '41-р хороо', value: 'khoroo' },
   { label: '42-р хороо', value: 'khoroo' },
-  { label: '43-р хороо', value: 'khoroo' },
+  { label: '43-р хороо', value: 'khoroo' }
 ];
 
 const suhbaatar = [
@@ -577,7 +577,7 @@ const suhbaatar = [
   { label: '17-р хороо', value: 'khoroo' },
   { label: '18-р хороо', value: 'khoroo' },
   { label: '19-р хороо', value: 'khoroo' },
-  { label: '20-р хороо', value: 'khoroo' },
+  { label: '20-р хороо', value: 'khoroo' }
 ];
 
 const hanuul = [
@@ -601,7 +601,7 @@ const hanuul = [
   { label: '18-р хороо', value: 'khoroo' },
   { label: '19-р хороо', value: 'khoroo' },
   { label: '20-р хороо', value: 'khoroo' },
-  { label: '21-р хороо', value: 'khoroo' },
+  { label: '21-р хороо', value: 'khoroo' }
 ];
 
 const chingeltei = [
@@ -623,7 +623,7 @@ const chingeltei = [
   { label: '16-р хороо', value: 'khoroo' },
   { label: '17-р хороо', value: 'khoroo' },
   { label: '18-р хороо', value: 'khoroo' },
-  { label: '19-р хороо', value: 'khoroo' },
+  { label: '19-р хороо', value: 'khoroo' }
 ];
 
 export const Duureg = {
@@ -656,5 +656,5 @@ export const Duureg = {
   songinohairhan,
   suhbaatar,
   hanuul,
-  chingeltei,
+  chingeltei
 };

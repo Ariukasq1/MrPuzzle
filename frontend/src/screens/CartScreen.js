@@ -14,21 +14,23 @@ export default function CartScreen() {
   const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
-    cart: { cartItems },
+    cart: { cartItems }
   } = state;
 
   const updateCartHandler = async (item, quantity) => {
-    const { data } = await axios.get(`/api/products/${item._id}`);
+    const { data } = await axios.get(
+      `https://polar-lake-47657.herokuapp.com/api/products/${item._id}`
+    );
     if (data.countInStock < quantity) {
       window.alert('Sorry. Product is out of stock');
       return;
     }
     ctxDispatch({
       type: 'CART_ADD_ITEM',
-      payload: { ...item, quantity },
+      payload: { ...item, quantity }
     });
   };
-  const removeItemHandler = (item) => {
+  const removeItemHandler = item => {
     ctxDispatch({ type: 'CART_REMOVE_ITEM', payload: item });
   };
 
@@ -51,7 +53,7 @@ export default function CartScreen() {
             </MessageBox>
           ) : (
             <ListGroup>
-              {cartItems.map((item) => (
+              {cartItems.map(item => (
                 <ListGroup.Item key={item._id}>
                   <Row className="align-items-center">
                     <Col md={5}>

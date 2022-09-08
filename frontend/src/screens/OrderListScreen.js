@@ -16,7 +16,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         orders: action.payload,
-        loading: false,
+        loading: false
       };
     case 'FETCH_FAIL':
       return { ...state, loading: false, error: action.payload };
@@ -30,21 +30,24 @@ export default function OrderListScreen() {
   const { userInfo } = state;
   const [{ loading, error, orders }, dispatch] = useReducer(reducer, {
     loading: true,
-    error: '',
+    error: ''
   });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await axios.get(`/api/orders`, {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
-        });
+        const { data } = await axios.get(
+          `https://polar-lake-47657.herokuapp.com/api/orders`,
+          {
+            headers: { Authorization: `Bearer ${userInfo.token}` }
+          }
+        );
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (err) {
         dispatch({
           type: 'FETCH_FAIL',
-          payload: getError(err),
+          payload: getError(err)
         });
       }
     };
@@ -75,7 +78,7 @@ export default function OrderListScreen() {
             </tr>
           </thead>
           <tbody>
-            {orders.map((order) => (
+            {orders.map(order => (
               <tr key={order._id}>
                 <td>{order._id}</td>
                 <td>{order.user ? order.user.name : 'Устгагдсан хэрэглэгч'}</td>

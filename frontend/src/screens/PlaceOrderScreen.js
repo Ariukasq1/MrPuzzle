@@ -56,7 +56,7 @@ export default function PlaceOrderScreen() {
       dispatch({ type: 'CREATE_REQUEST' });
 
       const { data } = await Axios.post(
-        '/api/orders',
+        'https://polar-lake-47657.herokuapp.com/api/orders',
         {
           orderItems: cart.cartItems,
           shippingAddress: cart.shippingAddress,
@@ -167,7 +167,7 @@ export default function PlaceOrderScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>Хүргэлт</Col>
-                    <Col>5000₮</Col>
+                    <Col>{deliver.toLocaleString()}₮</Col>
                   </Row>
                 </ListGroup.Item>
 

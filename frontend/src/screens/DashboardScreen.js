@@ -17,7 +17,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         summary: action.payload,
-        loading: false,
+        loading: false
       };
     case 'FETCH_FAIL':
       return { ...state, loading: false, error: action.payload };
@@ -28,7 +28,7 @@ const reducer = (state, action) => {
 export default function DashboardScreen() {
   const [{ loading, summary, error }, dispatch] = useReducer(reducer, {
     loading: true,
-    error: '',
+    error: ''
   });
   const { state } = useContext(Store);
   const { userInfo } = state;
@@ -36,14 +36,17 @@ export default function DashboardScreen() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get('/api/orders/summary', {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
-        });
+        const { data } = await axios.get(
+          'https://polar-lake-47657.herokuapp.com/api/orders/summary',
+          {
+            headers: { Authorization: `Bearer ${userInfo.token}` }
+          }
+        );
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (err) {
         dispatch({
           type: 'FETCH_FAIL',
-          payload: getError(err),
+          payload: getError(err)
         });
       }
     };
@@ -110,7 +113,7 @@ export default function DashboardScreen() {
                 loader={<div>:Диаграмм уншиж байна...</div>}
                 data={[
                   ['Огноо', 'Борлуулалт'],
-                  ...summary.dailyOrders.map((x) => [x._id, x.sales]),
+                  ...summary.dailyOrders.map(x => [x._id, x.sales])
                 ]}
               ></Chart>
             )}
@@ -127,7 +130,7 @@ export default function DashboardScreen() {
                 loader={<div>Уншиж байна...</div>}
                 data={[
                   ['Category', 'Products'],
-                  ...summary.productCategories.map((x) => [x._id, x.count]),
+                  ...summary.productCategories.map(x => [x._id, x.count])
                 ]}
               ></Chart>
             )}

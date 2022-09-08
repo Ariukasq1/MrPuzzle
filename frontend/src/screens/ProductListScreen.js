@@ -20,7 +20,7 @@ const reducer = (state, action) => {
         products: action.payload.products,
         page: action.payload.page,
         pages: action.payload.pages,
-        loading: false,
+        loading: false
       };
     case 'FETCH_FAIL':
       return { ...state, loading: false, error: action.payload };
@@ -29,7 +29,7 @@ const reducer = (state, action) => {
     case 'CREATE_SUCCESS':
       return {
         ...state,
-        loadingCreate: false,
+        loadingCreate: false
       };
     case 'CREATE_FAIL':
       return { ...state, loadingCreate: false };
@@ -39,7 +39,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         loadingDelete: false,
-        successDelete: true,
+        successDelete: true
       };
     case 'DELETE_FAIL':
       return { ...state, loadingDelete: false, successDelete: false };
@@ -61,12 +61,12 @@ export default function ProductListScreen() {
       pages,
       loadingCreate,
       loadingDelete,
-      successDelete,
+      successDelete
     },
-    dispatch,
+    dispatch
   ] = useReducer(reducer, {
     loading: true,
-    error: '',
+    error: ''
   });
 
   const navigate = useNavigate();
@@ -80,9 +80,12 @@ export default function ProductListScreen() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(`/api/products/admin?page=${page} `, {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
-        });
+        const { data } = await axios.get(
+          `https://polar-lake-47657.herokuapp.com/api/products/admin?page=${page} `,
+          {
+            headers: { Authorization: `Bearer ${userInfo.token}` }
+          }
+        );
 
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (err) {}
@@ -99,10 +102,10 @@ export default function ProductListScreen() {
       try {
         dispatch({ type: 'CREATE_REQUEST' });
         const { data } = await axios.post(
-          '/api/products',
+          'https://polar-lake-47657.herokuapp.com/api/products',
           {},
           {
-            headers: { Authorization: `Bearer ${userInfo.token}` },
+            headers: { Authorization: `Bearer ${userInfo.token}` }
           }
         );
         toast.success('Бараа амжилттай үүслээ');
@@ -111,23 +114,26 @@ export default function ProductListScreen() {
       } catch (err) {
         toast.error(getError(error));
         dispatch({
-          type: 'CREATE_FAIL',
+          type: 'CREATE_FAIL'
         });
       }
     }
   };
-  const deleteHandler = async (product) => {
+  const deleteHandler = async product => {
     if (window.confirm('Устгахдаа итгэлтэй байна уу?')) {
       try {
-        await axios.delete(`/api/products/${product._id}`, {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
-        });
+        await axios.delete(
+          `https://polar-lake-47657.herokuapp.com/api/products/${product._id}`,
+          {
+            headers: { Authorization: `Bearer ${userInfo.token}` }
+          }
+        );
         toast.success('Бараа амжилттай устгагдлаа');
         dispatch({ type: 'DELETE_SUCCESS' });
       } catch (err) {
         toast.error(getError(error));
         dispatch({
-          type: 'DELETE_FAIL',
+          type: 'DELETE_FAIL'
         });
       }
     }
@@ -169,7 +175,7 @@ export default function ProductListScreen() {
               </tr>
             </thead>
             <tbody>
-              {products.map((product) => (
+              {products.map(product => (
                 <tr key={product._id}>
                   <td>{product._id}</td>
                   <td>{product.name}</td>
@@ -198,7 +204,7 @@ export default function ProductListScreen() {
             </tbody>
           </table>
           <div>
-            {[...Array(pages).keys()].map((x) => (
+            {[...Array(pages).keys()].map(x => (
               <Link
                 className={x + 1 === Number(page) ? 'btn text-bold' : 'btn'}
                 key={x + 1}
