@@ -1,7 +1,4 @@
-import React, { useState, useReducer } from 'react';
-
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import React, { useReducer } from 'react';
 
 function reducer(state, action) {
   switch (action.type) {
@@ -21,7 +18,7 @@ export default function Popup() {
   const [{ order }] = useReducer(reducer, {
     loading: true,
     order: {},
-    error: '',
+    error: ''
   });
 
   return <div> </div>;

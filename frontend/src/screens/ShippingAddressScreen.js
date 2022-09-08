@@ -12,7 +12,7 @@ export default function ShippingAddressScreen() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
     userInfo,
-    cart: { shippingAddress },
+    cart: { shippingAddress }
   } = state;
   const [firstName, setFirstName] = useState(shippingAddress.firstName || '');
   const [lastName, setLastName] = useState(shippingAddress.lastName || '');
@@ -29,7 +29,7 @@ export default function ShippingAddressScreen() {
     }
   }, [userInfo, navigate]);
 
-  const submitHandler = (e) => {
+  const submitHandler = e => {
     e.preventDefault();
     ctxDispatch({
       type: 'SAVE_SHIPPING_ADDRESS',
@@ -42,8 +42,8 @@ export default function ShippingAddressScreen() {
         city,
         duureg,
         khoroo,
-        location: shippingAddress.location,
-      },
+        location: shippingAddress.location
+      }
     });
     localStorage.setItem(
       'shippingAddress',
@@ -56,13 +56,11 @@ export default function ShippingAddressScreen() {
         duureg,
         khoroo,
         address,
-        location: shippingAddress.location,
+        location: shippingAddress.location
       })
     );
     navigate('/payment');
   };
-  console.log(Duureg);
-  console.log(city);
 
   return (
     <div>
@@ -80,7 +78,7 @@ export default function ShippingAddressScreen() {
                 <Form.Label>Нэр</Form.Label>
                 <Form.Control
                   value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
+                  onChange={e => setFirstName(e.target.value)}
                   required
                 />
               </Form.Group>
@@ -90,7 +88,7 @@ export default function ShippingAddressScreen() {
                 <Form.Label>Овог</Form.Label>
                 <Form.Control
                   value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
+                  onChange={e => setLastName(e.target.value)}
                   required
                 />
               </Form.Group>
@@ -102,7 +100,7 @@ export default function ShippingAddressScreen() {
                 <Form.Label>Имэйл</Form.Label>
                 <Form.Control
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={e => setEmail(e.target.value)}
                   required
                 />
               </Form.Group>
@@ -112,7 +110,7 @@ export default function ShippingAddressScreen() {
                 <Form.Label>Утасны дугаар</Form.Label>
                 <Form.Control
                   value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  onChange={e => setPhone(e.target.value)}
                   required
                 />
               </Form.Group>
@@ -122,8 +120,8 @@ export default function ShippingAddressScreen() {
             <div className="col-6">
               <Form.Group className="mb-3" controlId="city">
                 <Form.Label>Хот/Аймаг</Form.Label>
-                <Form.Select onChange={(e) => setCity(e.target.value)} required>
-                  {TYPES.map((type) => (
+                <Form.Select onChange={e => setCity(e.target.value)} required>
+                  {TYPES.map(type => (
                     <option
                       selected={city === type.value && 'selected'}
                       value={type.value}
@@ -137,13 +135,10 @@ export default function ShippingAddressScreen() {
             <div className="col-6">
               <Form.Group className="mb-3" controlId="duureg">
                 <Form.Label>Дүүрэг/Сум</Form.Label>
-                <Form.Select
-                  onChange={(e) => setDuureg(e.target.value)}
-                  required
-                >
+                <Form.Select onChange={e => setDuureg(e.target.value)} required>
                   {Duureg[city] &&
                     Duureg[city].length > 0 &&
-                    Duureg[city].map((type) => (
+                    Duureg[city].map(type => (
                       <option value={type.value}>{type.label}</option>
                     ))}
                 </Form.Select>
@@ -154,13 +149,10 @@ export default function ShippingAddressScreen() {
             <div className="col-6">
               <Form.Group className="mb-3" controlId="khoroo">
                 <Form.Label>Хороо/Баг</Form.Label>
-                <Form.Select
-                  onChange={(e) => setKhoroo(e.target.value)}
-                  required
-                >
+                <Form.Select onChange={e => setKhoroo(e.target.value)} required>
                   {Duureg[duureg] &&
                     Duureg[duureg].length > 0 &&
-                    Duureg[duureg].map((type) => (
+                    Duureg[duureg].map(type => (
                       <option value={type.value}>{type.label}</option>
                     ))}
                 </Form.Select>
@@ -176,7 +168,7 @@ export default function ShippingAddressScreen() {
                   italic={true}
                   placeholder="Б.З.Д-ийн 2-р хороо 83-р байр 2-р орц код:1234"
                   value={address}
-                  onChange={(e) => setAddress(e.target.value)}
+                  onChange={e => setAddress(e.target.value)}
                   required
                   class="form-control"
                   id="exampleFormControlTextarea1"
