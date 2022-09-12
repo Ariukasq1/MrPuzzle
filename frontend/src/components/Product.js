@@ -48,7 +48,7 @@ function Product(props) {
             {product.price.toLocaleString()}₮
           </div>
         </Card.Text>
-
+        {/* 
         {product.countInStock === 0 ? (
           <Button variant="light" disabled>
             Дууссан
@@ -60,7 +60,7 @@ function Product(props) {
           >
             Сагс руу нэмэх
           </Button>
-        )}
+        )} */}
       </Card.Body>
     </Card>
   );
