@@ -41,7 +41,7 @@ function App() {
     const fetchCategories = async () => {
       try {
         const { data } = await axios.get(
-          'https://polar-lake-47657.herokuapp.com/api/products/categories'
+          'http://localhost:5001egories'
         );
         setCategories(data);
       } catch (err) {

@@ -38,7 +38,7 @@ export default function OrderListScreen() {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
         const { data } = await axios.get(
-          `https://polar-lake-47657.herokuapp.com/api/orders`,
+          `http://localhost:5001/api/orders`,
           {
             headers: { Authorization: `Bearer ${userInfo.token}` }
           }

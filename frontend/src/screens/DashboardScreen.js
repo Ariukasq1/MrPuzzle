@@ -37,7 +37,7 @@ export default function DashboardScreen() {
     const fetchData = async () => {
       try {
         const { data } = await axios.get(
-          'https://polar-lake-47657.herokuapp.com/api/orders/summary',
+          'http://localhost:5001/api/orders/summary',
           {
             headers: { Authorization: `Bearer ${userInfo.token}` }
           }

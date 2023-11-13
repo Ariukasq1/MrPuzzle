@@ -37,7 +37,7 @@ export default function ProfileScreen() {
     e.preventDefault();
     try {
       const { data } = await axios.put(
-        'https://polar-lake-47657.herokuapp.com/api/users/profile',
+        'http://localhost:5001/api/users/profile',
         {
           name,
           email,

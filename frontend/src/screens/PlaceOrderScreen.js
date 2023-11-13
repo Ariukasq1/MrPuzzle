@@ -56,7 +56,7 @@ export default function PlaceOrderScreen() {
       dispatch({ type: 'CREATE_REQUEST' });
 
       const { data } = await Axios.post(
-        'https://polar-lake-47657.herokuapp.com/api/orders',
+        'http://localhost:5001/api/orders',
         {
           orderItems: cart.cartItems,
           shippingAddress: cart.shippingAddress,

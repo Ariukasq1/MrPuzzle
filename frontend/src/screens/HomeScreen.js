@@ -41,7 +41,7 @@ function HomeScreen() {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
         const result = await axios.get(
-          'https://polar-lake-47657.herokuapp.com/api/products'
+          'http://localhost:5001/api/products'
         );
         dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
       } catch (err) {

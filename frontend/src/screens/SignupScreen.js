@@ -30,7 +30,7 @@ export default function SignupScreen() {
     }
     try {
       const { data } = await Axios.post(
-        'https://polar-lake-47657.herokuapp.com/api/users/signup',
+        'http://localhost:5001/api/users/signup',
         {
           name,
           email,

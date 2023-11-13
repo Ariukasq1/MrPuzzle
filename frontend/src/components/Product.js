@@ -17,7 +17,7 @@ function Product(props) {
     const existItem = cartItems.find(x => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data } = await axios.get(
-      `https://polar-lake-47657.herokuapp.com/api/products/${item._id}`
+      `http://localhost:5001/api/products/${item._id}`
     );
     if (data.countInStock < quantity) {
       window.alert('Уучлаарай энэ бараа дууссан байна.');

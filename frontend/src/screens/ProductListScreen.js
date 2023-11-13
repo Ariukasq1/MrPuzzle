@@ -81,7 +81,7 @@ export default function ProductListScreen() {
     const fetchData = async () => {
       try {
         const { data } = await axios.get(
-          `https://polar-lake-47657.herokuapp.com/api/products/admin?page=${page} `,
+          `http://localhost:5001/api/products/admin?page=${page} `,
           {
             headers: { Authorization: `Bearer ${userInfo.token}` }
           }
@@ -102,7 +102,7 @@ export default function ProductListScreen() {
       try {
         dispatch({ type: 'CREATE_REQUEST' });
         const { data } = await axios.post(
-          'https://polar-lake-47657.herokuapp.com/api/products',
+          'http://localhost:5001/api/products',
           {},
           {
             headers: { Authorization: `Bearer ${userInfo.token}` }
@@ -123,7 +123,7 @@ export default function ProductListScreen() {
     if (window.confirm('Устгахдаа итгэлтэй байна уу?')) {
       try {
         await axios.delete(
-          `https://polar-lake-47657.herokuapp.com/api/products/${product._id}`,
+          `http://localhost:5001/api/products/${product._id}`,
           {
             headers: { Authorization: `Bearer ${userInfo.token}` }
           }

@@ -50,7 +50,7 @@ export default function UserListScreen() {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
         const { data } = await axios.get(
-          `https://polar-lake-47657.herokuapp.com/api/users`,
+          `http://localhost:5001/api/users`,
           {
             headers: { Authorization: `Bearer ${userInfo.token}` }
           }
@@ -75,7 +75,7 @@ export default function UserListScreen() {
       try {
         dispatch({ type: 'DELETE_REQUEST' });
         await axios.delete(
-          `https://polar-lake-47657.herokuapp.com/api/users/${user._id}`,
+          `http://localhost:5001/api/users/${user._id}`,
           {
             headers: { Authorization: `Bearer ${userInfo.token}` }
           }
