@@ -1,35 +1,35 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import HomeScreen from './screens/HomeScreen';
-import ProductScreen from './screens/ProductScreen';
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
-import { useContext, useEffect, useState } from 'react';
-import { Store } from './Store';
-import CartScreen from './screens/CartScreen';
-import SigninScreen from './screens/SigninScreen';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import ShippingAddressScreen from './screens/ShippingAddressScreen';
-import SignupScreen from './screens/SignupScreen';
-import OrderHistoryScreen from './screens/OrderHistoryScreen';
-import ProfileScreen from './screens/ProfileScreen';
-import Footer from './components/Footer';
-import { getError } from './utils';
-import axios from 'axios';
-import PaymentMethodScreen from './screens/PaymentMethodScreen';
-import PlaceOrderScreen from './screens/PlaceOrderScreen';
-import OrderScreen from './screens/OrderScreen';
-import SearchScreen from './screens/SearchScreen';
-import ShippingPrivacy from './screens/ShippingPrivacy';
-import ProtectedRoute from './components/ProtectedRoute';
-import DashboardScreen from './screens/DashboardScreen';
-import AdminRoute from './components/AdminRoute';
-import ProductListScreen from './screens/ProductListScreen';
-import ProductEditScreen from './screens/ProductEditScreen';
-import OrderListScreen from './screens/OrderListScreen';
-import UserEditScreen from './screens/UserEditScreen';
-import UserListScreen from './screens/UserListScreen';
-import HeaderMenu from './components/HeaderMenu';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomeScreen from "./screens/HomeScreen";
+import ProductScreen from "./screens/ProductScreen";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import { useContext, useEffect, useState } from "react";
+import { Store } from "./Store";
+import CartScreen from "./screens/CartScreen";
+import SigninScreen from "./screens/SigninScreen";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ShippingAddressScreen from "./screens/ShippingAddressScreen";
+import SignupScreen from "./screens/SignupScreen";
+import OrderHistoryScreen from "./screens/OrderHistoryScreen";
+import ProfileScreen from "./screens/ProfileScreen";
+import Footer from "./components/Footer";
+import { getError } from "./utils";
+import axios from "axios";
+import PaymentMethodScreen from "./screens/PaymentMethodScreen";
+import PlaceOrderScreen from "./screens/PlaceOrderScreen";
+import OrderScreen from "./screens/OrderScreen";
+import SearchScreen from "./screens/SearchScreen";
+import ShippingPrivacy from "./screens/ShippingPrivacy";
+import ProtectedRoute from "./components/ProtectedRoute";
+import DashboardScreen from "./screens/DashboardScreen";
+import AdminRoute from "./components/AdminRoute";
+import ProductListScreen from "./screens/ProductListScreen";
+import ProductEditScreen from "./screens/ProductEditScreen";
+import OrderListScreen from "./screens/OrderListScreen";
+import UserEditScreen from "./screens/UserEditScreen";
+import UserListScreen from "./screens/UserListScreen";
+import HeaderMenu from "./components/HeaderMenu";
 
 function App() {
   const { state } = useContext(Store);
@@ -41,7 +41,7 @@ function App() {
     const fetchCategories = async () => {
       try {
         const { data } = await axios.get(
-          'http://localhost:5001egories'
+          "http://localhost:5001/api/products/categories"
         );
         setCategories(data);
       } catch (err) {
